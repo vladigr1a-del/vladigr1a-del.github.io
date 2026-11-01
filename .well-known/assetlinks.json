@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.vladigr1a_del.suomi",
+        "sha256_cert_fingerprints": ["7B:4F:18:51:74:D6:93:64:49:ED:F1:FB:BF:AA:67:AF:7E:EF:4B:42:45:57:A7:63:53:22:13:7E:DE:FC:3D:B3"]
+      }
+    }]
