@@ -1,0 +1,58 @@
+export const a1x = {
+  path: { a1x_pron: 'Đại từ', a1x_num2: 'Số đếm và số thứ tự', a1x_where: 'Ở đâu?', a1x_countries: 'Các nước', a1x_langs: 'Ngôn ngữ', a1x_age: 'Tuổi và thông tin cá nhân', a1x_family: 'Thêm về gia đình', a1x_food2: 'Món ăn Phần Lan và đồ ăn vặt', a1x_fruit: 'Trái cây và rau', a1x_clothes2: 'Thêm quần áo', a1x_house2: 'Trong nhà', a1x_objects: 'Đồ vật hằng ngày', a1x_body: 'Cơ thể', a1x_animals: 'Động vật', a1x_nature: 'Thiên nhiên', a1x_school: 'Đồ dùng học tập', a1x_clock: 'Từ chỉ thời gian', a1x_shops: 'Cửa hàng và địa điểm', a1x_transport: 'Giao thông', a1x_verbs3: 'Hành động hằng ngày', a1x_adj2: 'Mô tả đồ vật', a1x_quantity: 'Bao nhiêu', a1x_phrases: 'Câu hữu ích', a1x_help: 'Gọi giúp đỡ' },
+  words: {
+    a1x_pron: ['anh ấy / cô ấy', 'chúng tôi', 'các bạn', 'họ (người)', 'cái này', 'cái kia', 'nó', 'những cái này', 'những cái kia', 'chúng (đồ vật)', 'của tôi', 'của bạn', 'của anh ấy / cô ấy', 'của chúng tôi'],
+    a1x_num2: ['không', 'hai mươi mốt', 'ba mươi', 'bốn mươi', 'năm mươi', 'sáu mươi', 'bảy mươi', 'tám mươi', 'chín mươi', 'một trăm', 'một nghìn', 'thứ nhất', 'thứ hai', 'thứ ba'],
+    a1x_where: ['ở đây', 'ở đó', 'ở đằng kia', 'bên trong', 'bên ngoài', 'trên', 'dưới', 'bên cạnh', 'phía trước', 'phía sau', 'ở giữa (hai thứ)', 'ở trên cao', 'ở dưới thấp', 'chính giữa'],
+    a1x_countries: ['Phần Lan', 'Thụy Điển', 'Nga', 'Estonia', 'Đức', 'Anh', 'Tây Ban Nha', 'Pháp', 'Ý', 'Ba Lan', 'Bulgaria', 'Thổ Nhĩ Kỳ', 'Trung Quốc', 'Ấn Độ'],
+    a1x_langs: ['tiếng Thụy Điển', 'tiếng Anh', 'tiếng Nga', 'tiếng Đức', 'tiếng Tây Ban Nha', 'tiếng Pháp', 'tiếng Bulgaria', 'tiếng Ba Lan', 'tiếng Ả Rập', 'tiếng Trung', 'tiếng Bồ Đào Nha', 'tiếng Thổ Nhĩ Kỳ', 'tiếng Estonia', 'tiếng Hindi'],
+    a1x_age: ['tuổi', 'năm', 'tuổi (số năm)', 'sinh ra', 'tên', 'họ', 'số điện thoại', 'mã bưu chính', 'địa chỉ (đường)', 'ngày sinh', 'quốc tịch', 'tiếng mẹ đẻ', 'bao nhiêu tuổi', 'giới tính'],
+    a1x_family: ['dì / cô', 'chú / bác', 'anh chị em họ', 'ông bà', 'cháu (của ông bà)', 'vợ / chồng', 'đã kết hôn', 'em bé', 'bé gái', 'em trai', 'chị gái', 'sinh đôi', 'họ hàng', 'cặp đôi'],
+    a1x_food2: ['bánh mì lúa mạch đen', 'cháo', 'xúc xích', 'cá hồi', 'cá trích Baltic', 'bánh Karelia', 'bánh bột ngọt', 'bánh mì kẹp', 'pizza', 'hamburger', 'kem', 'sô cô la', 'kẹo', 'bánh quy'],
+    a1x_fruit: ['chuối', 'cam', 'chanh', 'lê', 'dâu tây', 'việt quất', 'mâm xôi', 'cà rốt', 'hành tây', 'cà chua', 'dưa chuột', 'bắp cải', 'nấm', 'quả mọng'],
+    a1x_clothes2: ['mũ len', 'khăn trùm đầu', 'khăn quàng', 'quần bò', 'váy ngắn', 'bộ com lê', 'quần tất', 'thắt lưng', 'giày thể thao', 'giày ống', 'ô', 'kính', 'đồng hồ đeo tay', 'găng tay'],
+    a1x_house2: ['ghế sofa', 'thảm', 'rèm cửa', 'kệ', 'cầu thang', 'nhà vệ sinh', 'vòi hoa sen', 'máy giặt', 'tủ lạnh', 'lò nướng', 'bếp', 'máy rửa bát', 'khăn tắm', 'xà phòng'],
+    a1x_objects: ['bút', 'giấy', 'túi', 'máy tính', 'đèn', 'tường', 'sàn nhà', 'trần nhà', 'gương', 'cốc thủy tinh', 'tách', 'đĩa', 'dao', 'nĩa'],
+    a1x_body: ['mắt', 'tai', 'mũi', 'miệng', 'răng', 'cổ', 'lưng', 'vai', 'ngón tay', 'đầu gối', 'ngón chân', 'tóc', 'khuôn mặt', 'trái tim'],
+    a1x_animals: ['chó', 'mèo', 'chim', 'ngựa', 'bò', 'cừu', 'lợn', 'chuột', 'thỏ', 'gấu', 'sói', 'nai sừng tấm', 'tuần lộc', 'sóc'],
+    a1x_nature: ['cây', 'hoa', 'hồ', 'biển', 'sông', 'rừng', 'núi', 'đá', 'bầu trời', 'mặt trăng', 'ngôi sao', 'đám mây', 'cỏ', 'hòn đảo'],
+    a1x_school: ['lớp học', 'học sinh', 'ba lô', 'vở', 'cục tẩy', 'thước kẻ', 'bảng', 'phấn', 'giờ ra chơi', 'học kỳ', 'sách giáo khoa', 'bảng chữ cái', 'chữ cái', 'âm tiết'],
+    a1x_clock: ['giờ (60 phút)', 'giây', 'tuần', 'tháng', 'năm', 'sáng sớm', 'giữa buổi sáng', 'buổi trưa', 'buổi chiều', 'nửa đêm', 'tuần này', 'tháng trước', 'năm sau', 'mỗi tuần'],
+    a1x_shops: ['quầy báo', 'hiệu sách', 'cửa hàng quần áo', 'cửa hàng tạp hóa', 'cửa hàng giày', 'tiệm làm tóc', 'tiệm cắt tóc nam', 'tiệm giặt là', 'cửa hàng hoa', 'trạm xăng', 'rạp chiếu phim', 'nhà hát', 'bãi biển', 'sân chơi trẻ em'],
+    a1x_transport: ['ô tô', 'xe đạp', 'tàu điện ngầm', 'xe điện', 'taxi', 'máy bay', 'tàu thủy', 'con đường', 'cây cầu', 'bến cảng', 'đèn giao thông', 'đường cao tốc', 'bãi đỗ xe', 'xăng'],
+    a1x_verbs3: ['ngồi', 'đứng', 'nằm', 'chạy', 'nhảy', 'cười', 'khóc', 'mỉm cười', 'rửa', 'đặt', 'mặc quần áo', 'dậy', 'lái xe', 'nấu'],
+    a1x_adj2: ['dài / cao', 'ngắn', 'rộng', 'hẹp', 'dày', 'mỏng', 'nặng', 'nhẹ', 'cứng', 'mềm', 'ướt', 'khô', 'sáng', 'tối'],
+    a1x_quantity: ['nhiều', 'nhiều người', 'tất cả', 'một vài', 'không ai', 'một cặp', 'vài', 'nhiều hơn', 'ít hơn', 'đủ', 'quá nhiều', 'duy nhất', 'mà (đại từ quan hệ)', 'một nửa'],
+    a1x_phrases: ['không sao', 'không quan trọng', 'tôi không hiểu', 'bạn có thể nhắc lại không', 'bạn có nói tiếng Anh không', 'chậm thôi', 'rõ rồi', 'tất nhiên', 'có thể', 'tiếc là', 'chúc mừng', 'thượng lộ bình an', 'chào mừng', 'cảm ơn, bạn cũng vậy'],
+    a1x_help: ['cứu với!', 'tình huống khẩn cấp', 'số khẩn cấp', 'xe cứu thương', 'hỏa hoạn', 'nguy hiểm', 'cẩn thận', 'tai nạn', 'mất tích', 'bị đánh cắp', 'thiệt hại', 'cứu', 'bình tĩnh', 'xin chờ'],
+  },
+  missions: {
+    a1x_where: {
+      steps: [
+        { partnerTr: 'Chìa khóa của tôi ở đâu?', prompt: 'Hãy nói «Chúng ở trên bàn».', optionsTr: ['Chúng ở trên bàn.', 'Tôi muốn một cốc cà phê.', 'Chúc ngủ ngon.'], hint: 'Bạn nói một vật nằm ở đâu.', wordTr: 'trên' },
+        { partnerTr: 'Con mèo ở đâu?', prompt: 'Hãy nói «Con mèo ở dưới giường».', optionsTr: ['Chào buổi sáng.', 'Con mèo ở dưới giường.', 'Cái này giá năm euro.'], hint: 'Bạn nói con mèo ở đâu.', wordTr: 'dưới' },
+        { partnerTr: 'Trường học ở đâu?', prompt: 'Sắp xếp các từ theo thứ tự. Hãy nói «Trường học ở bên cạnh cửa hàng».', blocksTr: ['1. Trường học', '2. ở', '3. của cửa hàng', '4. bên cạnh'], pattern: 'Mẫu: đồ vật + on (ở) + chủ sở hữu + từ chỉ vị trí. «kaupan vieressä» = «bên cạnh cửa hàng»: kauppa đổi thành kaupan, rồi từ chỉ vị trí đứng sau.', wordTr: 'bên cạnh' },
+        { partnerTr: 'Nhà vệ sinh ở đằng kia.', prompt: 'Hãy nói to: «Nó ở bên trong hay bên ngoài?»', targetTr: 'Nó ở bên trong hay bên ngoài?', wordTr: 'bên ngoài' },
+      ],
+      can: ['nói một vật ở đâu', 'dùng các từ dưới, bên cạnh, bên trong và bên ngoài', 'hỏi một vật ở trong hay ngoài'],
+    },
+    a1x_age: {
+      steps: [
+        { partnerTr: 'Bạn bao nhiêu tuổi?', prompt: 'Hãy nói bạn ba mươi lăm tuổi.', optionsTr: ['Tôi ba mươi lăm tuổi.', 'Tôi muốn một cốc cà phê.', 'Chúc ngủ ngon.'], hint: 'Người ta hỏi tuổi của bạn.', wordTr: 'bao nhiêu tuổi' },
+        { partnerTr: 'Họ của bạn là gì?', prompt: 'Hãy nói họ của bạn là Virtanen.', optionsTr: ['Cái này giá ba euro.', 'Họ của tôi là Virtanen.', 'Tạm biệt.'], hint: 'Người ta hỏi họ của bạn.', wordTr: 'họ' },
+        { partnerTr: 'Bạn sinh ra ở đâu?', prompt: 'Sắp xếp các từ theo thứ tự. Hãy nói «Tôi sinh ra ở Phần Lan».', blocksTr: ['1. Tôi là', '2. sinh ra', '3. ở Phần Lan'], pattern: 'Mẫu: tôi là + sinh ra + ở đâu. «olen syntynyt» = «tôi sinh ra» (nghĩa đen «tôi là người sinh ra»). Đuôi -ssa nghĩa là «ở».', wordTr: 'sinh ra' },
+        { partnerTr: 'Tiếng mẹ đẻ của bạn là gì?', prompt: 'Hãy nói to: «Tiếng mẹ đẻ của tôi không phải tiếng Phần Lan».', targetTr: 'Tiếng mẹ đẻ của tôi không phải tiếng Phần Lan.', wordTr: 'tiếng mẹ đẻ' },
+      ],
+      can: ['nói bạn bao nhiêu tuổi', 'nói họ của bạn', 'nói bạn sinh ra ở đâu', 'nói tiếng mẹ đẻ của bạn'],
+    },
+    a1x_help: {
+      steps: [
+        { partnerTr: 'Chuyện gì đã xảy ra?', prompt: 'Hãy nói đã có một tai nạn.', optionsTr: ['Đã có một tai nạn.', 'Tôi muốn một cốc cà phê.', 'Chúc ngủ ngon.'], hint: 'Bạn báo một vụ tai nạn.', wordTr: 'tai nạn' },
+        { partnerTr: 'Bạn có cần xe cứu thương không?', prompt: 'Hãy nói «Vâng, hãy gọi xe cứu thương».', optionsTr: ['Chào buổi sáng.', 'Vâng, hãy gọi xe cứu thương.', 'Nhà ga ở đâu?'], hint: 'Tìm câu trả lời «vâng, hãy gọi».', wordTr: 'xe cứu thương' },
+        { partnerTr: 'Cái gì bị lấy cắp?', prompt: 'Sắp xếp các từ theo thứ tự. Hãy nói «Túi của tôi bị lấy cắp».', blocksTr: ['1. Túi của tôi', '2. thì', '3. bị lấy cắp'], pattern: 'Mẫu: đồ của tôi + on + bị lấy cắp. Đuôi -ni nghĩa là «của tôi»: laukku đổi thành laukkuni.', wordTr: 'bị đánh cắp' },
+        { partnerTr: 'Số khẩn cấp là gì?', prompt: 'Hãy nói to: «Số khẩn cấp là một một hai».', targetTr: 'Số khẩn cấp là một một hai.', wordTr: 'số khẩn cấp' },
+      ],
+      can: ['nói chuyện gì đã xảy ra', 'xin xe cứu thương', 'nói một thứ đã bị lấy cắp', 'biết số khẩn cấp 112'],
+    },
+  },
+};

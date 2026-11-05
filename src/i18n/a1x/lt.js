@@ -1,0 +1,58 @@
+export const a1x = {
+  path: { a1x_pron: 'Įvardžiai', a1x_num2: 'Skaičiai ir kelintiniai', a1x_where: 'Kur tai yra?', a1x_countries: 'Šalys', a1x_langs: 'Kalbos', a1x_age: 'Amžius ir asmens duomenys', a1x_family: 'Dar šeima', a1x_food2: 'Suomiškas maistas ir užkandžiai', a1x_fruit: 'Vaisiai ir daržovės', a1x_clothes2: 'Dar drabužių', a1x_house2: 'Namuose', a1x_objects: 'Kasdieniai daiktai', a1x_body: 'Kūnas', a1x_animals: 'Gyvūnai', a1x_nature: 'Gamta', a1x_school: 'Mokyklos daiktai', a1x_clock: 'Laiko žodžiai', a1x_shops: 'Parduotuvės ir vietos', a1x_transport: 'Transportas', a1x_verbs3: 'Kasdieniai veiksmai', a1x_adj2: 'Daiktų aprašymas', a1x_quantity: 'Kiek', a1x_phrases: 'Naudingos frazės', a1x_help: 'Kviesti pagalbą' },
+  words: {
+    a1x_pron: ['jis / ji', 'mes', 'jūs', 'jie (žmonės)', 'šis', 'tas (ten)', 'tai', 'šie', 'tie (ten)', 'jie (daiktai)', 'mano', 'tavo', 'jo / jos', 'mūsų'],
+    a1x_num2: ['nulis', 'dvidešimt vienas', 'trisdešimt', 'keturiasdešimt', 'penkiasdešimt', 'šešiasdešimt', 'septyniasdešimt', 'aštuoniasdešimt', 'devyniasdešimt', 'šimtas', 'tūkstantis', 'pirmas', 'antras', 'trečias'],
+    a1x_where: ['čia', 'ten', 'ten toliau', 'viduje', 'lauke', 'ant', 'po', 'šalia', 'priešais', 'už', 'tarp', 'viršuje', 'apačioje', 'viduryje'],
+    a1x_countries: ['Suomija', 'Švedija', 'Rusija', 'Estija', 'Vokietija', 'Anglija', 'Ispanija', 'Prancūzija', 'Italija', 'Lenkija', 'Bulgarija', 'Turkija', 'Kinija', 'Indija'],
+    a1x_langs: ['švedų', 'anglų', 'rusų', 'vokiečių', 'ispanų', 'prancūzų', 'bulgarų', 'lenkų', 'arabų', 'kinų', 'portugalų', 'turkų', 'estų', 'hindi'],
+    a1x_age: ['amžius', 'metai', 'metų amžiaus', 'gimęs', 'vardas', 'pavardė', 'telefono numeris', 'pašto kodas', 'adresas (gatvė)', 'gimimo data', 'pilietybė', 'gimtoji kalba', 'kiek metų', 'lytis'],
+    a1x_family: ['teta', 'dėdė', 'pusbrolis / pusseserė', 'seneliai', 'anūkas', 'sutuoktinis', 'vedęs / ištekėjusi', 'kūdikis', 'mergaitė', 'jaunesnysis brolis', 'vyresnė sesuo', 'dvyniai', 'giminaitis', 'pora'],
+    a1x_food2: ['ruginė duona', 'košė', 'dešra', 'lašiša', 'Baltijos silkė', 'Karelijos pyragėlis', 'saldi bandelė', 'sumuštinis', 'pica', 'mėsainis', 'ledai', 'šokoladas', 'saldainis', 'sausainis'],
+    a1x_fruit: ['bananas', 'apelsinas', 'citrina', 'kriaušė', 'braškė', 'mėlynė', 'avietė', 'morka', 'svogūnas', 'pomidoras', 'agurkas', 'kopūstas', 'grybas', 'uoga'],
+    a1x_clothes2: ['megzta kepurė', 'skarelė', 'šalikas', 'džinsai', 'sijonas', 'kostiumas', 'pėdkelnės', 'diržas', 'sportbačiai', 'batai (žieminiai)', 'skėtis', 'akiniai', 'rankinis laikrodis', 'pirštinės'],
+    a1x_house2: ['sofa', 'kilimas', 'užuolaida', 'lentyna', 'laiptai', 'tualetas', 'dušas', 'skalbimo mašina', 'šaldytuvas', 'orkaitė', 'viryklė', 'indaplovė', 'rankšluostis', 'muilas'],
+    a1x_objects: ['rašiklis', 'popierius', 'krepšys', 'kompiuteris', 'lempa', 'siena', 'grindys', 'lubos', 'veidrodis', 'stiklinė', 'puodelis', 'lėkštė', 'peilis', 'šakutė'],
+    a1x_body: ['akis', 'ausis', 'nosis', 'burna', 'dantis', 'kaklas', 'nugara', 'petys', 'pirštas (rankos)', 'kelis', 'pirštas (kojos)', 'plaukai', 'veidas', 'širdis'],
+    a1x_animals: ['šuo', 'katė', 'paukštis', 'arklys', 'karvė', 'avis', 'kiaulė', 'pelė', 'triušis', 'meška', 'vilkas', 'briedis', 'šiaurės elnias', 'voverė'],
+    a1x_nature: ['medis', 'gėlė', 'ežeras', 'jūra', 'upė', 'miškas', 'kalnas', 'akmuo', 'dangus', 'mėnulis', 'žvaigždė', 'debesis', 'žolė', 'sala'],
+    a1x_school: ['klasė', 'mokinys', 'kuprinė', 'sąsiuvinis', 'trintukas', 'liniuotė', 'lenta', 'kreida', 'pertrauka', 'semestras', 'vadovėlis', 'abėcėlė', 'raidė', 'skiemuo'],
+    a1x_clock: ['valanda (60 minučių)', 'sekundė', 'savaitė', 'mėnuo', 'metai', 'ankstyvas rytas', 'priešpietis', 'vidurdienis', 'popietė', 'vidurnaktis', 'šią savaitę', 'praėjusį mėnesį', 'kitais metais', 'kiekvieną savaitę'],
+    a1x_shops: ['kioskas', 'knygynas', 'drabužių parduotuvė', 'maisto parduotuvė', 'avalynės parduotuvė', 'kirpykla', 'vyrų kirpykla', 'skalbykla', 'gėlių parduotuvė', 'degalinė', 'kino teatras', 'teatras', 'paplūdimys', 'vaikų žaidimų aikštelė'],
+    a1x_transport: ['automobilis', 'dviratis', 'metro', 'tramvajus', 'taksi', 'lėktuvas', 'laivas', 'kelias', 'tiltas', 'uostas', 'šviesoforas', 'greitkelis', 'automobilių stovėjimo aikštelė', 'benzinas'],
+    a1x_verbs3: ['sėdėti', 'stovėti', 'gulėti', 'bėgti', 'šokinėti', 'juoktis', 'verkti', 'šypsotis', 'plauti', 'dėti', 'rengtis', 'keltis', 'vairuoti', 'virti'],
+    a1x_adj2: ['ilgas / aukštas', 'trumpas', 'platus', 'siauras', 'storas', 'plonas', 'sunkus', 'lengvas', 'kietas', 'minkštas', 'šlapias', 'sausas', 'šviesus', 'tamsus'],
+    a1x_quantity: ['daug', 'daugelis', 'visi', 'kai kurie', 'nė vienas', 'pora', 'keli', 'daugiau', 'mažiau', 'pakankamai', 'per daug', 'vienintelis', 'kuris', 'pusė'],
+    a1x_phrases: ['nieko tokio', 'nesvarbu', 'nesuprantu', 'ar galite pakartoti', 'ar kalbate angliškai', 'lėtai', 'aišku', 'žinoma', 'galbūt', 'deja', 'sveikinu', 'laimingos kelionės', 'sveiki atvykę', 'ačiū, jums irgi'],
+    a1x_help: ['padėkite!', 'avarinė situacija', 'pagalbos numeris', 'greitoji pagalba', 'gaisras', 'pavojus', 'atsargiai', 'nelaimingas atsitikimas', 'dingęs', 'pavogtas', 'žala', 'gelbėti', 'nusiraminkite', 'palaukite'],
+  },
+  missions: {
+    a1x_where: {
+      steps: [
+        { partnerTr: 'Kur mano raktai?', prompt: 'Pasakyk: „Jie ant stalo“.', optionsTr: ['Jie ant stalo.', 'Norėčiau kavos.', 'Labanakt.'], hint: 'Sakai, kur kas nors yra.', wordTr: 'ant' },
+        { partnerTr: 'Kur katė?', prompt: 'Pasakyk: „Katė po lova“.', optionsTr: ['Labas rytas.', 'Katė po lova.', 'Tai kainuoja penkis eurus.'], hint: 'Sakai, kur katė.', wordTr: 'po' },
+        { partnerTr: 'Kur mokykla?', prompt: 'Sudėliok žodžius eilės tvarka. Pasakyk: „Mokykla yra šalia parduotuvės“.', blocksTr: ['1. Mokykla', '2. yra', '3. parduotuvės', '4. šalia'], pattern: 'Pavyzdys: daiktas + on (yra) + savininkas + vietos žodis. „kaupan vieressä“ = „šalia parduotuvės“: kauppa tampa kaupan, o vietos žodis eina po jo.', wordTr: 'šalia' },
+        { partnerTr: 'Tualetas yra ten toliau.', prompt: 'Pasakyk garsiai: „Jis viduje ar lauke?“', targetTr: 'Jis viduje ar lauke?', wordTr: 'lauke' },
+      ],
+      can: ['pasakyti, kur kas nors yra', 'vartoti žodžius po, šalia, viduje ir lauke', 'paklausti, ar kas nors viduje, ar lauke'],
+    },
+    a1x_age: {
+      steps: [
+        { partnerTr: 'Kiek tau metų?', prompt: 'Pasakyk, kad tau trisdešimt penkeri metai.', optionsTr: ['Man trisdešimt penkeri metai.', 'Norėčiau kavos.', 'Labanakt.'], hint: 'Klausia tavo amžiaus.', wordTr: 'kiek metų' },
+        { partnerTr: 'Kokia tavo pavardė?', prompt: 'Pasakyk, kad tavo pavardė Virtanen.', optionsTr: ['Tai kainuoja tris eurus.', 'Mano pavardė Virtanen.', 'Viso gero.'], hint: 'Klausia pavardės.', wordTr: 'pavardė' },
+        { partnerTr: 'Kur tu gimei?', prompt: 'Sudėliok žodžius eilės tvarka. Pasakyk: „Aš gimiau Suomijoje“.', blocksTr: ['1. Aš esu', '2. gimęs', '3. Suomijoje'], pattern: 'Pavyzdys: aš esu + gimęs + kur. „olen syntynyt“ = „esu gimęs“. Galūnė -ssa reiškia „kur / viduje“.', wordTr: 'gimęs' },
+        { partnerTr: 'Kokia tavo gimtoji kalba?', prompt: 'Pasakyk garsiai: „Mano gimtoji kalba nėra suomių“.', targetTr: 'Mano gimtoji kalba nėra suomių.', wordTr: 'gimtoji kalba' },
+      ],
+      can: ['pasakyti, kiek tau metų', 'pasakyti savo pavardę', 'pasakyti, kur gimei', 'įvardyti savo gimtąją kalbą'],
+    },
+    a1x_help: {
+      steps: [
+        { partnerTr: 'Kas atsitiko?', prompt: 'Pasakyk, kad įvyko nelaimingas atsitikimas.', optionsTr: ['Įvyko nelaimingas atsitikimas.', 'Norėčiau kavos.', 'Labanakt.'], hint: 'Pranešiesi apie nelaimę.', wordTr: 'nelaimingas atsitikimas' },
+        { partnerTr: 'Ar jums reikia greitosios pagalbos?', prompt: 'Pasakyk: „Taip, iškvieskite greitąją pagalbą“.', optionsTr: ['Labas rytas.', 'Taip, iškvieskite greitąją pagalbą.', 'Kur stotis?'], hint: 'Ieškome atsakymo „taip, iškvieskite“.', wordTr: 'greitoji pagalba' },
+        { partnerTr: 'Ką pavogė?', prompt: 'Sudėliok žodžius eilės tvarka. Pasakyk: „Mano krepšys pavogtas“.', blocksTr: ['1. Mano krepšys', '2. yra', '3. pavogtas'], pattern: 'Pavyzdys: mano daiktas + on (yra) + pavogtas. Galūnė -ni reiškia „mano“: laukku tampa laukkuni.', wordTr: 'pavogtas' },
+        { partnerTr: 'Koks pagalbos numeris?', prompt: 'Pasakyk garsiai: „Pagalbos numeris yra vienas vienas du“.', targetTr: 'Pagalbos numeris yra vienas vienas du.', wordTr: 'pagalbos numeris' },
+      ],
+      can: ['pasakyti, kas atsitiko', 'paprašyti greitosios pagalbos', 'pasakyti, kad kas nors pavogta', 'žinoti pagalbos numerį 112'],
+    },
+  },
+};

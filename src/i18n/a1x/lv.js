@@ -1,0 +1,58 @@
+export const a1x = {
+  path: { a1x_pron: 'Vietniekvārdi', a1x_num2: 'Skaitļi un kārtas skaitļi', a1x_where: 'Kur tas ir?', a1x_countries: 'Valstis', a1x_langs: 'Valodas', a1x_age: 'Vecums un personas dati', a1x_family: 'Vēl ģimene', a1x_food2: 'Somu ēdieni un uzkodas', a1x_fruit: 'Augļi un dārzeņi', a1x_clothes2: 'Vēl apģērbs', a1x_house2: 'Mājās', a1x_objects: 'Ikdienas priekšmeti', a1x_body: 'Ķermenis', a1x_animals: 'Dzīvnieki', a1x_nature: 'Daba', a1x_school: 'Skolas lietas', a1x_clock: 'Laika vārdi', a1x_shops: 'Veikali un vietas', a1x_transport: 'Transports', a1x_verbs3: 'Ikdienas darbības', a1x_adj2: 'Lietu apraksts', a1x_quantity: 'Cik daudz', a1x_phrases: 'Noderīgas frāzes', a1x_help: 'Palīdzības saukšana' },
+  words: {
+    a1x_pron: ['viņš / viņa', 'mēs', 'jūs', 'viņi (cilvēki)', 'šis', 'tas (tur)', 'tas (nekustīgs)', 'šie', 'tie (tur)', 'tie (lietas)', 'mans', 'tavs', 'viņa / viņas', 'mūsu'],
+    a1x_num2: ['nulle', 'divdesmit viens', 'trīsdesmit', 'četrdesmit', 'piecdesmit', 'sešdesmit', 'septiņdesmit', 'astoņdesmit', 'deviņdesmit', 'simts', 'tūkstotis', 'pirmais', 'otrais', 'trešais'],
+    a1x_where: ['šeit', 'tur', 'tur tālāk', 'iekšā', 'ārā', 'uz', 'zem', 'blakus', 'priekšā', 'aiz', 'starp', 'augšā', 'lejā', 'vidū'],
+    a1x_countries: ['Somija', 'Zviedrija', 'Krievija', 'Igaunija', 'Vācija', 'Anglija', 'Spānija', 'Francija', 'Itālija', 'Polija', 'Bulgārija', 'Turcija', 'Ķīna', 'Indija'],
+    a1x_langs: ['zviedru', 'angļu', 'krievu', 'vācu', 'spāņu', 'franču', 'bulgāru', 'poļu', 'arābu', 'ķīniešu', 'portugāļu', 'turku', 'igauņu', 'hindi'],
+    a1x_age: ['vecums', 'gadi', 'gadus vecs', 'dzimis', 'vārds', 'uzvārds', 'tālruņa numurs', 'pasta indekss', 'adrese (iela)', 'dzimšanas datums', 'pilsonība', 'dzimtā valoda', 'cik gadu', 'dzimums'],
+    a1x_family: ['tante', 'onkulis', 'brālēns / māsīca', 'vecvecāki', 'mazbērns', 'dzīvesbiedrs', 'precējies', 'mazulis', 'meitene', 'jaunākais brālis', 'vecākā māsa', 'dvīņi', 'radinieks', 'pāris'],
+    a1x_food2: ['rudzu maize', 'biezputra', 'desa', 'lasis', 'Baltijas siļķe', 'Karēlijas pīrādziņš', 'saldā maizīte', 'sviestmaize', 'pica', 'burgers', 'saldējums', 'šokolāde', 'konfekte', 'cepums'],
+    a1x_fruit: ['banāns', 'apelsīns', 'citrons', 'bumbieris', 'zemene', 'mellene', 'avene', 'burkāns', 'sīpols', 'tomāts', 'gurķis', 'kāposts', 'sēne', 'oga'],
+    a1x_clothes2: ['adīta cepure', 'lakats', 'šalle', 'džinsi', 'svārki', 'uzvalks', 'zeķbikses', 'josta', 'sporta kurpes', 'zābaki', 'lietussargs', 'brilles', 'rokas pulkstenis', 'cimdi'],
+    a1x_house2: ['dīvāns', 'paklājs', 'aizkars', 'plaukts', 'kāpnes', 'tualete', 'duša', 'veļas mašīna', 'ledusskapis', 'cepeškrāsns', 'plīts', 'trauku mazgājamā mašīna', 'dvielis', 'ziepes'],
+    a1x_objects: ['pildspalva', 'papīrs', 'soma', 'dators', 'lampa', 'siena', 'grīda', 'griesti', 'spogulis', 'glāze', 'krūze', 'šķīvis', 'nazis', 'dakšiņa'],
+    a1x_body: ['acs', 'auss', 'deguns', 'mute', 'zobs', 'kakls', 'mugura', 'plecs', 'pirksts (rokas)', 'celis', 'pirksts (kājas)', 'mati', 'seja', 'sirds'],
+    a1x_animals: ['suns', 'kaķis', 'putns', 'zirgs', 'govs', 'aita', 'cūka', 'pele', 'trusis', 'lācis', 'vilks', 'alnis', 'ziemeļbriedis', 'vāvere'],
+    a1x_nature: ['koks', 'zieds', 'ezers', 'jūra', 'upe', 'mežs', 'kalns', 'akmens', 'debesis', 'mēness', 'zvaigzne', 'mākonis', 'zāle', 'sala'],
+    a1x_school: ['klase', 'skolēns', 'mugursoma', 'burtnīca', 'dzēšgumija', 'lineāls', 'tāfele', 'krīts', 'starpbrīdis', 'semestris', 'mācību grāmata', 'alfabēts', 'burts', 'zilbe'],
+    a1x_clock: ['stunda (60 minūtes)', 'sekunde', 'nedēļa', 'mēnesis', 'gads', 'agrs rīts', 'pirmspusdiena', 'pusdienlaiks', 'pēcpusdiena', 'pusnakts', 'šonedēļ', 'pagājušajā mēnesī', 'nākamajā gadā', 'katru nedēļu'],
+    a1x_shops: ['kiosks', 'grāmatnīca', 'apģērbu veikals', 'pārtikas veikals', 'apavu veikals', 'frizētava', 'bārddzinis', 'veļas mazgātava', 'ziedu veikals', 'degvielas uzpildes stacija', 'kinoteātris', 'teātris', 'pludmale', 'rotaļu laukums'],
+    a1x_transport: ['automašīna', 'velosipēds', 'metro', 'tramvajs', 'taksometrs', 'lidmašīna', 'kuģis', 'ceļš', 'tilts', 'osta', 'luksofors', 'šoseja', 'stāvvieta', 'benzīns'],
+    a1x_verbs3: ['sēdēt', 'stāvēt', 'gulēt', 'skriet', 'lēkt', 'smieties', 'raudāt', 'smaidīt', 'mazgāt', 'likt', 'ģērbties', 'celties', 'vadīt (auto)', 'vārīt'],
+    a1x_adj2: ['garš / augsts', 'īss', 'plats', 'šaurs', 'resns', 'tievs', 'smags', 'viegls', 'ciets', 'mīksts', 'slapjš', 'sauss', 'gaišs', 'tumšs'],
+    a1x_quantity: ['daudz', 'daudzi', 'visi', 'daži', 'neviens', 'pāris', 'dažas', 'vairāk', 'mazāk', 'pietiekami', 'par daudz', 'vienīgais', 'kurš', 'puse'],
+    a1x_phrases: ['nekas', 'nav svarīgi', 'es nesaprotu', 'vai varat atkārtot', 'vai jūs runājat angliski', 'lēnām', 'skaidrs', 'protams', 'varbūt', 'diemžēl', 'apsveicu', 'laimīgu ceļu', 'laipni lūdzam', 'paldies, jums arī'],
+    a1x_help: ['palīgā!', 'ārkārtas situācija', 'ārkārtas numurs', 'ātrā palīdzība', 'ugunsgrēks', 'briesmas', 'uzmanību', 'negadījums', 'pazudis', 'nozagts', 'bojājums', 'glābt', 'nomierinieties', 'uzgaidiet'],
+  },
+  missions: {
+    a1x_where: {
+      steps: [
+        { partnerTr: 'Kur ir manas atslēgas?', prompt: 'Pasaki: «Tās ir uz galda».', optionsTr: ['Tās ir uz galda.', 'Es gribētu kafiju.', 'Ar labunakti.'], hint: 'Tu saki, kur kaut kas atrodas.', wordTr: 'uz' },
+        { partnerTr: 'Kur ir kaķis?', prompt: 'Pasaki: «Kaķis ir zem gultas».', optionsTr: ['Labrīt.', 'Kaķis ir zem gultas.', 'Tas maksā piecus eiro.'], hint: 'Tu saki, kur ir kaķis.', wordTr: 'zem' },
+        { partnerTr: 'Kur ir skola?', prompt: 'Sakārto vārdus pareizā secībā. Pasaki: «Skola ir blakus veikalam».', blocksTr: ['1. Skola', '2. atrodas', '3. veikala', '4. blakus'], pattern: 'Paraugs: lieta + on (atrodas) + īpašnieks + vietas vārds. «kaupan vieressä» = «blakus veikalam»: kauppa kļūst par kaupan, un vietas vārds nāk pēc tā.', wordTr: 'blakus' },
+        { partnerTr: 'Tualete ir tur tālāk.', prompt: 'Pasaki skaļi: «Tā ir iekšā vai ārā?»', targetTr: 'Tā ir iekšā vai ārā?', wordTr: 'ārā' },
+      ],
+      can: ['pateikt, kur kaut kas atrodas', 'lietot vārdus zem, blakus, iekšā un ārā', 'pajautāt, vai kaut kas ir iekšā vai ārā'],
+    },
+    a1x_age: {
+      steps: [
+        { partnerTr: 'Cik tev gadu?', prompt: 'Pasaki, ka tev ir trīsdesmit pieci gadi.', optionsTr: ['Man ir trīsdesmit pieci gadi.', 'Es gribētu kafiju.', 'Ar labunakti.'], hint: 'Tev jautā vecumu.', wordTr: 'cik gadu' },
+        { partnerTr: 'Kāds ir tavs uzvārds?', prompt: 'Pasaki, ka tavs uzvārds ir Virtanens.', optionsTr: ['Tas maksā trīs eiro.', 'Mans uzvārds ir Virtanens.', 'Uz redzēšanos.'], hint: 'Tev jautā uzvārdu.', wordTr: 'uzvārds' },
+        { partnerTr: 'Kur tu esi dzimis?', prompt: 'Sakārto vārdus pareizā secībā. Pasaki: «Es esmu dzimis Somijā».', blocksTr: ['1. Es esmu', '2. dzimis', '3. Somijā'], pattern: 'Paraugs: es esmu + dzimis + kur. «olen syntynyt» = «esmu dzimis». Galotne -ssa nozīmē «kur / iekšā».', wordTr: 'dzimis' },
+        { partnerTr: 'Kāda ir tava dzimtā valoda?', prompt: 'Pasaki skaļi: «Mana dzimtā valoda nav somu valoda».', targetTr: 'Mana dzimtā valoda nav somu valoda.', wordTr: 'dzimtā valoda' },
+      ],
+      can: ['pateikt savu vecumu', 'nosaukt savu uzvārdu', 'pateikt, kur esi dzimis', 'nosaukt savu dzimto valodu'],
+    },
+    a1x_help: {
+      steps: [
+        { partnerTr: 'Kas notika?', prompt: 'Pasaki, ka noticis negadījums.', optionsTr: ['Noticis negadījums.', 'Es gribētu kafiju.', 'Ar labunakti.'], hint: 'Tu ziņo par negadījumu.', wordTr: 'negadījums' },
+        { partnerTr: 'Vai jums vajadzīga ātrā palīdzība?', prompt: 'Pasaki: «Jā, izsauciet ātro palīdzību».', optionsTr: ['Labrīt.', 'Jā, izsauciet ātro palīdzību.', 'Kur ir stacija?'], hint: 'Meklējam atbildi «jā, izsauciet».', wordTr: 'ātrā palīdzība' },
+        { partnerTr: 'Ko nozaga?', prompt: 'Sakārto vārdus pareizā secībā. Pasaki: «Mana soma ir nozagta».', blocksTr: ['1. Mana soma', '2. ir', '3. nozagta'], pattern: 'Paraugs: mana lieta + on (ir) + nozagta. Galotne -ni nozīmē «mans»: laukku kļūst par laukkuni.', wordTr: 'nozagts' },
+        { partnerTr: 'Kāds ir ārkārtas numurs?', prompt: 'Pasaki skaļi: «Ārkārtas numurs ir viens viens divi».', targetTr: 'Ārkārtas numurs ir viens viens divi.', wordTr: 'ārkārtas numurs' },
+      ],
+      can: ['pateikt, kas noticis', 'lūgt ātro palīdzību', 'pateikt, ka kaut kas nozagts', 'zināt ārkārtas numuru 112'],
+    },
+  },
+};

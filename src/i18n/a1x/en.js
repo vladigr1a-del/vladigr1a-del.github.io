@@ -1,0 +1,58 @@
+export const a1x = {
+  path: { a1x_pron: 'Pronouns', a1x_num2: 'Numbers and ordinals', a1x_where: 'Where is it?', a1x_countries: 'Countries', a1x_langs: 'Languages', a1x_age: 'Age and personal details', a1x_family: 'More family', a1x_food2: 'Finnish foods and snacks', a1x_fruit: 'Fruit and vegetables', a1x_clothes2: 'More clothes', a1x_house2: 'Around the house', a1x_objects: 'Everyday objects', a1x_body: 'The body', a1x_animals: 'Animals', a1x_nature: 'Nature', a1x_school: 'School things', a1x_clock: 'Time words', a1x_shops: 'Shops and places', a1x_transport: 'Transport', a1x_verbs3: 'Everyday actions', a1x_adj2: 'Describing things', a1x_quantity: 'How much', a1x_phrases: 'Useful phrases', a1x_help: 'Getting help' },
+  words: {
+    a1x_pron: ['he / she', 'we', 'you (plural, formal)', 'they (people)', 'this', 'that (there)', 'it', 'these', 'those (there)', 'they (things)', 'my', 'your', 'his / her', 'our'],
+    a1x_num2: ['zero', 'twenty-one', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'one hundred', 'one thousand', 'first', 'second', 'third'],
+    a1x_where: ['here', 'there', 'over there', 'inside', 'outside', 'on', 'under', 'next to', 'in front of', 'behind', 'between', 'up above', 'down below', 'in the middle'],
+    a1x_countries: ['Finland', 'Sweden', 'Russia', 'Estonia', 'Germany', 'England', 'Spain', 'France', 'Italy', 'Poland', 'Bulgaria', 'Turkey', 'China', 'India'],
+    a1x_langs: ['Swedish', 'English', 'Russian', 'German', 'Spanish', 'French', 'Bulgarian', 'Polish', 'Arabic', 'Chinese', 'Portuguese', 'Turkish', 'Estonian', 'Hindi'],
+    a1x_age: ['age', 'years', 'years old', 'born', 'first name', 'surname', 'phone number', 'postcode', 'street address', 'date of birth', 'nationality', 'mother tongue', 'how old', 'gender'],
+    a1x_family: ['aunt', 'uncle', 'cousin', 'grandparents', 'grandchild', 'spouse', 'married', 'baby', 'girl', 'younger brother', 'older sister', 'twins', 'relative', 'couple'],
+    a1x_food2: ['rye bread', 'porridge', 'sausage', 'salmon', 'Baltic herring', 'Karelian pie', 'sweet bun', 'sandwich', 'pizza', 'hamburger', 'ice cream', 'chocolate', 'candy', 'biscuit'],
+    a1x_fruit: ['banana', 'orange', 'lemon', 'pear', 'strawberry', 'blueberry', 'raspberry', 'carrot', 'onion', 'tomato', 'cucumber', 'cabbage', 'mushroom', 'berry'],
+    a1x_clothes2: ['beanie', 'shawl', 'scarf', 'jeans', 'skirt', 'suit', 'tights', 'belt', 'sneakers', 'boots', 'umbrella', 'glasses', 'wristwatch', 'gloves'],
+    a1x_house2: ['sofa', 'rug', 'curtain', 'shelf', 'stairs', 'toilet', 'shower', 'washing machine', 'fridge', 'oven', 'stove', 'dishwasher', 'towel', 'soap'],
+    a1x_objects: ['pen', 'paper', 'bag', 'computer', 'lamp', 'wall', 'floor', 'ceiling', 'mirror', 'glass', 'cup', 'plate', 'knife', 'fork'],
+    a1x_body: ['eye', 'ear', 'nose', 'mouth', 'tooth', 'neck', 'back', 'shoulder', 'finger', 'knee', 'toe', 'hair', 'face', 'heart'],
+    a1x_animals: ['dog', 'cat', 'bird', 'horse', 'cow', 'sheep', 'pig', 'mouse', 'rabbit', 'bear', 'wolf', 'moose', 'reindeer', 'squirrel'],
+    a1x_nature: ['tree', 'flower', 'lake', 'sea', 'river', 'forest', 'mountain', 'stone', 'sky', 'moon', 'star', 'cloud', 'grass', 'island'],
+    a1x_school: ['classroom', 'pupil', 'backpack', 'notebook', 'eraser', 'ruler', 'blackboard', 'chalk', 'break (at school)', 'term', 'textbook', 'alphabet', 'letter (of the alphabet)', 'syllable'],
+    a1x_clock: ['hour', 'second (time)', 'week', 'month', 'year', 'small hours', 'late morning', 'noon', 'afternoon', 'midnight', 'this week', 'last month', 'next year', 'every week'],
+    a1x_shops: ['kiosk', 'bookshop', 'clothes shop', 'grocery shop', 'shoe shop', 'hair salon', 'barber', 'laundry', 'flower shop', 'petrol station', 'cinema', 'theatre', 'beach', 'playground'],
+    a1x_transport: ['car', 'bicycle', 'metro', 'tram', 'taxi', 'aeroplane', 'ship', 'road', 'bridge', 'harbour', 'traffic light', 'motorway', 'parking', 'petrol'],
+    a1x_verbs3: ['to sit', 'to stand', 'to lie', 'to run', 'to jump', 'to laugh', 'to cry', 'to smile', 'to wash', 'to put', 'to get dressed', 'to get up', 'to drive', 'to cook'],
+    a1x_adj2: ['long / tall', 'short', 'wide', 'narrow', 'thick', 'thin', 'heavy', 'light (not heavy)', 'hard', 'soft', 'wet', 'dry', 'bright', 'dark'],
+    a1x_quantity: ['a lot', 'many', 'all', 'some', 'none', 'a couple', 'a few', 'more', 'less', 'enough', 'too much', 'the only', 'who / which', 'half'],
+    a1x_phrases: ['never mind', 'it doesn’t matter', 'I don’t understand', 'can you repeat', 'do you speak English', 'slowly', 'alright', 'of course', 'maybe', 'unfortunately', 'congratulations', 'have a good trip', 'welcome', 'thanks, you too'],
+    a1x_help: ['help!', 'emergency', 'emergency number', 'ambulance', 'fire', 'danger', 'watch out', 'accident', 'missing', 'stolen', 'damage', 'to rescue', 'calm down', 'wait'],
+  },
+  missions: {
+    a1x_where: {
+      steps: [
+        { partnerTr: 'Where are my keys?', prompt: 'Say “They are on the table”.', optionsTr: ['They are on the table.', 'I would like a coffee.', 'Good night.'], hint: 'You are saying where something is.', wordTr: 'on' },
+        { partnerTr: 'Where is the cat?', prompt: 'Say “The cat is under the bed”.', optionsTr: ['Good morning.', 'The cat is under the bed.', 'It costs five euros.'], hint: 'You are saying where the cat is.', wordTr: 'under' },
+        { partnerTr: 'Where is the school?', prompt: 'Put the words in order. Say “The school is next to the shop”.', blocksTr: ['1. The school', '2. is', '3. the shop’s', '4. next to'], pattern: 'Pattern: thing + on (is) + owner + place word. “kaupan vieressä” = “next to the shop”: kauppa becomes kaupan, and the place word follows it.', wordTr: 'next to' },
+        { partnerTr: 'The toilet is over there.', prompt: 'Say out loud: “Is it inside or outside?”', targetTr: 'Is it inside or outside?', wordTr: 'outside' },
+      ],
+      can: ['say where something is', 'use under, next to, inside and outside', 'ask whether something is inside or outside'],
+    },
+    a1x_age: {
+      steps: [
+        { partnerTr: 'How old are you?', prompt: 'Say that you are thirty-five years old.', optionsTr: ['I am thirty-five years old.', 'I would like a coffee.', 'Good night.'], hint: 'They are asking your age.', wordTr: 'how old' },
+        { partnerTr: 'What is your surname?', prompt: 'Say that your surname is Virtanen.', optionsTr: ['It costs three euros.', 'My surname is Virtanen.', 'Goodbye.'], hint: 'They are asking for your surname.', wordTr: 'surname' },
+        { partnerTr: 'Where were you born?', prompt: 'Put the words in order. Say “I was born in Finland”.', blocksTr: ['1. I am', '2. born', '3. in Finland'], pattern: 'Pattern: I am + born + where. “olen syntynyt” = “I was born” (literally “I am born”). The ending -ssa means “in”.', wordTr: 'born' },
+        { partnerTr: 'What is your mother tongue?', prompt: 'Say out loud: “My mother tongue is not Finnish”.', targetTr: 'My mother tongue is not Finnish.', wordTr: 'mother tongue' },
+      ],
+      can: ['say how old you are', 'say your surname', 'say where you were born', 'say your mother tongue'],
+    },
+    a1x_help: {
+      steps: [
+        { partnerTr: 'What has happened?', prompt: 'Say that there was an accident.', optionsTr: ['There was an accident.', 'I would like a coffee.', 'Good night.'], hint: 'You are reporting an accident.', wordTr: 'accident' },
+        { partnerTr: 'Do you need an ambulance?', prompt: 'Say “Yes, call an ambulance”.', optionsTr: ['Good morning.', 'Yes, call an ambulance.', 'Where is the station?'], hint: 'We are looking for “yes, call”.', wordTr: 'ambulance' },
+        { partnerTr: 'What was stolen?', prompt: 'Put the words in order. Say “My bag has been stolen”.', blocksTr: ['1. My bag', '2. is', '3. stolen'], pattern: 'Pattern: my thing + on (is) + stolen. The ending -ni means “my”: laukku becomes laukkuni.', wordTr: 'stolen' },
+        { partnerTr: 'What is the emergency number?', prompt: 'Say out loud: “The emergency number is one one two”.', targetTr: 'The emergency number is one one two.', wordTr: 'emergency number' },
+      ],
+      can: ['say what has happened', 'ask for an ambulance', 'say that something was stolen', 'know the emergency number 112'],
+    },
+  },
+};

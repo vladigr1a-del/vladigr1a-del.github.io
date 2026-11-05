@@ -1,0 +1,58 @@
+export const a1x = {
+  path: { a1x_pron: 'Pronombres', a1x_num2: 'Números y ordinales', a1x_where: '¿Dónde está?', a1x_countries: 'Países', a1x_langs: 'Idiomas', a1x_age: 'Edad y datos personales', a1x_family: 'Más familia', a1x_food2: 'Comida finlandesa y tentempiés', a1x_fruit: 'Frutas y verduras', a1x_clothes2: 'Más ropa', a1x_house2: 'En casa', a1x_objects: 'Objetos cotidianos', a1x_body: 'El cuerpo', a1x_animals: 'Animales', a1x_nature: 'Naturaleza', a1x_school: 'Cosas del colegio', a1x_clock: 'Palabras del tiempo', a1x_shops: 'Tiendas y lugares', a1x_transport: 'Transporte', a1x_verbs3: 'Acciones cotidianas', a1x_adj2: 'Describir cosas', a1x_quantity: 'Cuánto', a1x_phrases: 'Frases útiles', a1x_help: 'Pedir ayuda' },
+  words: {
+    a1x_pron: ['él / ella', 'nosotros', 'ustedes / vosotros', 'ellos (personas)', 'este', 'aquel (allí)', 'ello', 'estos', 'aquellos (allí)', 'ellos (cosas)', 'mi', 'tu', 'su (de él / ella)', 'nuestro'],
+    a1x_num2: ['cero', 'veintiuno', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa', 'cien', 'mil', 'primero', 'segundo', 'tercero'],
+    a1x_where: ['aquí', 'allí', 'allá', 'dentro', 'fuera', 'encima', 'debajo', 'al lado de', 'delante de', 'detrás de', 'entre', 'arriba', 'abajo', 'en medio'],
+    a1x_countries: ['Finlandia', 'Suecia', 'Rusia', 'Estonia', 'Alemania', 'Inglaterra', 'España', 'Francia', 'Italia', 'Polonia', 'Bulgaria', 'Turquía', 'China', 'India'],
+    a1x_langs: ['sueco', 'inglés', 'ruso', 'alemán', 'español', 'francés', 'búlgaro', 'polaco', 'árabe', 'chino', 'portugués', 'turco', 'estonio', 'hindi'],
+    a1x_age: ['edad', 'años', 'años de edad', 'nacido', 'nombre', 'apellido', 'número de teléfono', 'código postal', 'dirección (calle)', 'fecha de nacimiento', 'nacionalidad', 'lengua materna', 'cuántos años', 'sexo'],
+    a1x_family: ['tía', 'tío', 'primo', 'abuelos', 'nieto', 'cónyuge', 'casado', 'bebé', 'niña', 'hermano menor', 'hermana mayor', 'gemelos', 'pariente', 'pareja'],
+    a1x_food2: ['pan de centeno', 'gachas', 'salchicha', 'salmón', 'arenque del Báltico', 'empanadilla de Carelia', 'bollo dulce', 'sándwich', 'pizza', 'hamburguesa', 'helado', 'chocolate', 'caramelo', 'galleta'],
+    a1x_fruit: ['plátano', 'naranja', 'limón', 'pera', 'fresa', 'arándano', 'frambuesa', 'zanahoria', 'cebolla', 'tomate', 'pepino', 'col', 'seta', 'baya'],
+    a1x_clothes2: ['gorro de punto', 'pañuelo', 'bufanda', 'vaqueros', 'falda', 'traje', 'medias', 'cinturón', 'zapatillas deportivas', 'botas', 'paraguas', 'gafas', 'reloj de pulsera', 'guantes'],
+    a1x_house2: ['sofá', 'alfombra', 'cortina', 'estante', 'escaleras', 'váter', 'ducha', 'lavadora', 'nevera', 'horno', 'cocina (fogón)', 'lavavajillas', 'toalla', 'jabón'],
+    a1x_objects: ['bolígrafo', 'papel', 'bolso', 'ordenador', 'lámpara', 'pared', 'suelo', 'techo', 'espejo', 'vaso', 'taza', 'plato', 'cuchillo', 'tenedor'],
+    a1x_body: ['ojo', 'oreja', 'nariz', 'boca', 'diente', 'cuello', 'espalda', 'hombro', 'dedo (de la mano)', 'rodilla', 'dedo (del pie)', 'pelo', 'cara', 'corazón'],
+    a1x_animals: ['perro', 'gato', 'pájaro', 'caballo', 'vaca', 'oveja', 'cerdo', 'ratón', 'conejo', 'oso', 'lobo', 'alce', 'reno', 'ardilla'],
+    a1x_nature: ['árbol', 'flor', 'lago', 'mar', 'río', 'bosque', 'montaña', 'piedra', 'cielo', 'luna', 'estrella', 'nube', 'hierba', 'isla'],
+    a1x_school: ['aula', 'alumno', 'mochila', 'cuaderno', 'goma de borrar', 'regla', 'pizarra', 'tiza', 'recreo', 'trimestre', 'libro de texto', 'alfabeto', 'letra', 'sílaba'],
+    a1x_clock: ['hora (60 minutos)', 'segundo', 'semana', 'mes', 'año', 'madrugada', 'media mañana', 'mediodía', 'tarde', 'medianoche', 'esta semana', 'el mes pasado', 'el año que viene', 'cada semana'],
+    a1x_shops: ['quiosco', 'librería', 'tienda de ropa', 'tienda de comestibles', 'zapatería', 'peluquería', 'barbería', 'lavandería', 'floristería', 'gasolinera', 'cine', 'teatro', 'playa', 'parque infantil'],
+    a1x_transport: ['coche', 'bicicleta', 'metro', 'tranvía', 'taxi', 'avión', 'barco', 'carretera', 'puente', 'puerto', 'semáforo', 'autopista', 'aparcamiento', 'gasolina'],
+    a1x_verbs3: ['sentarse', 'estar de pie', 'estar tumbado', 'correr', 'saltar', 'reír', 'llorar', 'sonreír', 'lavar', 'poner', 'vestirse', 'levantarse', 'conducir', 'cocer'],
+    a1x_adj2: ['largo / alto', 'corto', 'ancho', 'estrecho', 'grueso', 'delgado', 'pesado', 'ligero', 'duro', 'blando', 'mojado', 'seco', 'claro', 'oscuro'],
+    a1x_quantity: ['mucho', 'muchos', 'todos', 'algunos', 'ninguno', 'un par', 'unos pocos', 'más', 'menos', 'bastante', 'demasiado', 'el único', 'que (relativo)', 'la mitad'],
+    a1x_phrases: ['no pasa nada', 'no importa', 'no entiendo', '¿puede repetir?', '¿habla inglés?', 'despacio', 'entendido', 'por supuesto', 'quizá', 'por desgracia', 'felicidades', 'buen viaje', 'bienvenido', 'gracias, igualmente'],
+    a1x_help: ['¡socorro!', 'emergencia', 'número de emergencias', 'ambulancia', 'incendio', 'peligro', 'cuidado', 'accidente', 'desaparecido', 'robado', 'daño', 'rescatar', 'tranquilícese', 'espere'],
+  },
+  missions: {
+    a1x_where: {
+      steps: [
+        { partnerTr: '¿Dónde están mis llaves?', prompt: 'Di «Están encima de la mesa».', optionsTr: ['Están encima de la mesa.', 'Quisiera un café.', 'Buenas noches.'], hint: 'Dices dónde está algo.', wordTr: 'encima' },
+        { partnerTr: '¿Dónde está el gato?', prompt: 'Di «El gato está debajo de la cama».', optionsTr: ['Buenos días.', 'El gato está debajo de la cama.', 'Cuesta cinco euros.'], hint: 'Dices dónde está el gato.', wordTr: 'debajo' },
+        { partnerTr: '¿Dónde está el colegio?', prompt: 'Ordena las palabras. Di «El colegio está al lado de la tienda».', blocksTr: ['1. El colegio', '2. está', '3. de la tienda', '4. al lado'], pattern: 'Patrón: cosa + on (está) + poseedor + palabra de lugar. «kaupan vieressä» = «al lado de la tienda»: kauppa pasa a kaupan y la palabra de lugar va detrás.', wordTr: 'al lado de' },
+        { partnerTr: 'El váter está allá.', prompt: 'Di en voz alta: «¿Está dentro o fuera?»', targetTr: '¿Está dentro o fuera?', wordTr: 'fuera' },
+      ],
+      can: ['decir dónde está algo', 'usar debajo, al lado, dentro y fuera', 'preguntar si algo está dentro o fuera'],
+    },
+    a1x_age: {
+      steps: [
+        { partnerTr: '¿Cuántos años tienes?', prompt: 'Di que tienes treinta y cinco años.', optionsTr: ['Tengo treinta y cinco años.', 'Quisiera un café.', 'Buenas noches.'], hint: 'Te preguntan la edad.', wordTr: 'cuántos años' },
+        { partnerTr: '¿Cuál es tu apellido?', prompt: 'Di que tu apellido es Virtanen.', optionsTr: ['Cuesta tres euros.', 'Mi apellido es Virtanen.', 'Adiós.'], hint: 'Te preguntan el apellido.', wordTr: 'apellido' },
+        { partnerTr: '¿Dónde naciste?', prompt: 'Ordena las palabras. Di «Nací en Finlandia».', blocksTr: ['1. Yo soy', '2. nacido', '3. en Finlandia'], pattern: 'Patrón: yo soy + nacido + dónde. «olen syntynyt» = «nací» (literalmente «soy nacido»). La terminación -ssa significa «en».', wordTr: 'nacido' },
+        { partnerTr: '¿Cuál es tu lengua materna?', prompt: 'Di en voz alta: «Mi lengua materna no es el finés».', targetTr: 'Mi lengua materna no es el finés.', wordTr: 'lengua materna' },
+      ],
+      can: ['decir cuántos años tienes', 'decir tu apellido', 'decir dónde naciste', 'decir tu lengua materna'],
+    },
+    a1x_help: {
+      steps: [
+        { partnerTr: '¿Qué ha pasado?', prompt: 'Di que ha habido un accidente.', optionsTr: ['Ha habido un accidente.', 'Quisiera un café.', 'Buenas noches.'], hint: 'Informas de un accidente.', wordTr: 'accidente' },
+        { partnerTr: '¿Necesita una ambulancia?', prompt: 'Di «Sí, llamen a una ambulancia».', optionsTr: ['Buenos días.', 'Sí, llamen a una ambulancia.', '¿Dónde está la estación?'], hint: 'Buscamos «sí, llamen».', wordTr: 'ambulancia' },
+        { partnerTr: '¿Qué le han robado?', prompt: 'Ordena las palabras. Di «Me han robado el bolso».', blocksTr: ['1. Mi bolso', '2. está', '3. robado'], pattern: 'Patrón: mi cosa + on (está) + robado. La terminación -ni significa «mi»: laukku pasa a laukkuni.', wordTr: 'robado' },
+        { partnerTr: '¿Cuál es el número de emergencias?', prompt: 'Di en voz alta: «El número de emergencias es uno uno dos».', targetTr: 'El número de emergencias es uno uno dos.', wordTr: 'número de emergencias' },
+      ],
+      can: ['decir qué ha pasado', 'pedir una ambulancia', 'decir que te han robado algo', 'conocer el número de emergencias 112'],
+    },
+  },
+};
