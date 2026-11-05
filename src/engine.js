@@ -19,7 +19,7 @@ export const AGE = {
 
 function defaults() {
   // lang: null = автоматично (езикът на телефона)
-  return { v: 1, age: null, lang: null, words: {}, missions: {}, dayOffset: 0, trialStart: null, unlocked: false };
+  return { v: 1, age: null, lang: null, words: {}, missions: {}, tests: {}, dayOffset: 0, trialStart: null, unlocked: false };
 }
 
 let state = load();
@@ -194,6 +194,15 @@ export function markGroupKnown(group) {
   save();
 }
 
+// Тестове за напредък: пази се най-добрият резултат (колко изречения са подредени без подсказка).
+export function testResult(id) { return (state.tests && state.tests[id]) || null; }
+export function setTestResult(id, k, n) {
+  if (!state.tests) state.tests = {};
+  const old = state.tests[id];
+  state.tests[id] = { k: old ? Math.max(old.k, k) : k, n, last: k, runs: (old ? old.runs : 0) + 1 };
+  save();
+}
+
 export function missionDone(id) { return !!state.missions[id]; }
 export function setMissionDone(id) { state.missions[id] = true; save(); }
 
@@ -242,7 +251,7 @@ async function pipe(bytes, stream) {
 }
 
 export async function exportCode() {
-  const data = { a: state.age, l: state.lang, d: state.dayOffset, w: state.words, m: state.missions };
+  const data = { a: state.age, l: state.lang, d: state.dayOffset, w: state.words, m: state.missions, t: state.tests || {} };
   const raw = new TextEncoder().encode(JSON.stringify(data));
   const bytes = typeof CompressionStream === 'function' ? await pipe(raw, new CompressionStream('gzip')) : raw;
   return CODE_PREFIX + (typeof CompressionStream === 'function' ? 'z' : 'r') + toB64(bytes);
@@ -261,6 +270,7 @@ export async function importCode(code) {
     for (const v of Object.values(data.w)) if (!v || typeof v.box !== 'number' || typeof v.due !== 'number') return false;
     state.words = data.w;
     state.missions = data.m;
+    state.tests = data.t && typeof data.t === 'object' ? data.t : {};
     if (data.a === 'kid' || data.a === 'adult' || data.a === 'senior') state.age = data.a;
     if (typeof data.l === 'string' || data.l === null) state.lang = data.l;
     state.dayOffset = typeof data.d === 'number' ? data.d : 0;

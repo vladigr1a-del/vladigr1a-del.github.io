@@ -6,8 +6,16 @@ import { WORD_GROUPS_A2, PATH_A2 as PATH_A2_BASE, MISSIONS_A2 } from './level-a2
 import { WORD_GROUPS_A2B, PATH_A2B, MISSIONS_A2B } from './level-a2b.js';
 
 import { WORD_GROUPS_B, PATH_B1, PATH_B2, MISSIONS_B } from './level-b.js';
+import { TESTS } from './level-tests.js';
+import { WORD_GROUPS_B2C, PATH_B2C } from './level-b2c.js';
+import { WORD_GROUPS_B1C, PATH_B1C } from './level-b1c.js';
+import { WORD_GROUPS_A2C, PATH_A2C } from './level-a2c.js';
+import { WORD_GROUPS_A1X, PATH_A1X, MISSIONS_A1X, A1_ORDER, A1_MOVED_FROM_A2 } from './level-a1x.js';
 
-const PATH_A2 = [...PATH_A2_BASE, ...PATH_A2B];
+const PATH_A2_ALL = [...PATH_A2_BASE, ...PATH_A2B];
+// Част от уроците, които бяха в A2, са всъщност ниво A1 и се преместват. Думите им не се променят, затова напредъкът се запазва.
+const PATH_A2 = [...PATH_A2_ALL.filter((p) => !A1_MOVED_FROM_A2.includes(p.id)), ...PATH_A2C];
+const PATH_A1_EXTRA = A1_ORDER.map((id) => PATH_A1X.find((p) => p.id === id) || PATH_A2_ALL.find((p) => p.id === id));
 
 const WORD_GROUPS_A1 = {
   m1: {
@@ -108,13 +116,13 @@ const MISSIONS_A1 = {
 };
 
 // Всички нива заедно. PATH остава пътят на A1; LEVELS описва всяко ниво поотделно.
-export const WORD_GROUPS = { ...WORD_GROUPS_A1, ...WORD_GROUPS_A2, ...WORD_GROUPS_A2B, ...WORD_GROUPS_B };
-export const MISSIONS = { ...MISSIONS_A1, ...MISSIONS_A2, ...MISSIONS_A2B, ...MISSIONS_B };
+export const WORD_GROUPS = { ...WORD_GROUPS_A1, ...WORD_GROUPS_A2, ...WORD_GROUPS_A2B, ...WORD_GROUPS_B, ...WORD_GROUPS_A1X, ...WORD_GROUPS_A2C, ...WORD_GROUPS_B1C, ...WORD_GROUPS_B2C };
+export const MISSIONS = { ...MISSIONS_A1, ...MISSIONS_A2, ...MISSIONS_A2B, ...MISSIONS_B, ...MISSIONS_A1X };
 export const LEVELS = [
-  { id: 'A1', path: PATH },
+  { id: 'A1', path: [...PATH, ...PATH_A1_EXTRA] },
   { id: 'A2', path: PATH_A2 },
-  { id: 'B1', path: PATH_B1 },
-  { id: 'B2', path: PATH_B2 },
+  { id: 'B1', path: [...PATH_B1, ...PATH_B1C] },
+  { id: 'B2', path: [...PATH_B2, ...PATH_B2C] },
 ];
 export const ALL_PATH = LEVELS.flatMap((l) => l.path);
 export function levelGroups(id) { return LEVELS.find((l) => l.id === id).path.map((p) => p.group); }
@@ -122,3 +130,6 @@ export function levelOfGroup(group) {
   const l = LEVELS.find((lv) => lv.path.some((p) => p.group === group));
   return l ? l.id : null;
 }
+
+export { TESTS };
+export function testsOf(levelId) { return TESTS[levelId] || []; }

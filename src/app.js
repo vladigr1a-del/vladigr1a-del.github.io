@@ -1,4 +1,4 @@
-import { PATH, MISSIONS, WORD_GROUPS, LEVELS, levelGroups, levelOfGroup } from './content.js';
+import { PATH, MISSIONS, WORD_GROUPS, LEVELS, levelGroups, levelOfGroup, testsOf } from './content.js';
 import { CONFIG, paywallOn, setTestPaywall } from './config.js';
 
 let curLevel = null;
@@ -206,7 +206,128 @@ function home() {
     el('h2', { text: t('path') }),
     req.length ? el('p', { class: 'muted small', style: 'margin-bottom:8px', text: t('requiredNote', { done: reqDone, total: req.length }) }) : null,
     ...list,
+    testsSection(lv),
     curLevel === 'A1' && E.requiredDone() ? msg('ok', t('requiredAllDone')) : null);
+}
+
+/* ---------- тестове за напредък ---------- */
+function testsSection(lv) {
+  const tests = testsOf(lv.id);
+  if (!tests.length) return null;
+  const L = lv.path.length;
+  const cards = tests.map((test, i) => {
+    const res = E.testResult(test.id);
+    const a = Math.round((i * L) / tests.length) + 1;
+    const b = Math.round(((i + 1) * L) / tests.length);
+    return el('div', {
+      class: 'item ' + (res ? 'done' : ''), tabindex: '0', role: 'button', 'data-test': test.id,
+      onclick: () => testRun(test),
+      onkeydown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); testRun(test); } },
+    },
+    el('div', { class: 'dot' }, icon(res ? 'check' : 'circle')),
+    el('div', { style: 'flex:1; min-width:0' },
+      el('div', { class: 't', text: t('testName', { n: test.n }) }),
+      el('div', { class: 'muted small', text: res ? t('testBest', { k: res.k, n: res.n }) : t('testCovers', { a, b }) })));
+  });
+  return el('div', { style: 'margin-top:20px' },
+    el('h2', { text: t('testsHeading') }),
+    el('p', { class: 'muted small', style: 'margin:4px 0 8px', text: t('testsDesc') }),
+    ...cards);
+}
+
+function testRun(test) {
+  if (E.isLevelLocked(test.level)) { paywall(); return; }
+  const name = t('testName', { n: test.n });
+  const total = test.sentences.length;
+  let i = 0;
+  let clean = 0;
+  const back = () => { curLevel = test.level; home(); };
+
+  function segs(all) {
+    return el('div', { class: 'segs' }, ...test.sentences.map((_, k) => el('i', { class: all ? 'done' : k < i ? 'done' : k === i ? 'cur' : '' })));
+  }
+
+  function step() {
+    const s = test.sentences[i];
+    const n = s.answer.length;
+    const slots = new Array(n).fill(null);
+    const slotsEl = el('div', { class: 'slots' });
+    const bank = el('div');
+    const fb = el('div');
+    let solved = false;
+    let helped = false;
+    const next = el('button', { class: 'primary', style: 'display:none; margin-top:8px', onclick: () => { i++; i < total ? step() : finish(); } }, i === total - 1 ? t('testFinish') : t('continue'));
+    const check = el('button', { class: 'primary', style: 'margin-top:6px' }, t('check'));
+    const hint = el('button', { style: 'margin-top:8px' }, t('hintBtn'));
+
+    function draw() {
+      slotsEl.replaceChildren(); bank.replaceChildren();
+      const nx = slots.indexOf(null);
+      slots.forEach((w, k) => {
+        const sl = el('div', { class: 'slot' + (k === nx && !solved ? ' next' : '') }, el('span', { class: 'n', text: String(k + 1) }));
+        if (w) sl.append(el('span', { fi: true, class: 'chip', tabindex: '0', role: 'button', onclick: () => { if (solved) return; slots[k] = null; fb.replaceChildren(); draw(); } }, w));
+        slotsEl.append(sl);
+      });
+      s.words.filter((w) => !slots.includes(w)).forEach((w) => {
+        bank.append(el('span', { fi: true, class: 'chip', tabindex: '0', role: 'button', onclick: () => {
+          if (solved) return;
+          const f = slots.indexOf(null);
+          if (f >= 0) { slots[f] = w; buzz(); }
+          fb.replaceChildren(); draw();
+        } }, w));
+      });
+    }
+    check.onclick = () => {
+      if (solved) return;
+      if (slots.includes(null)) { fb.replaceChildren(msg('no', t('placeAll'))); return; }
+      if (slots.join(' ') === s.answer.join(' ')) {
+        solved = true;
+        if (!helped) clean++;
+        fb.replaceChildren(msg('ok', t('right')));
+        check.style.display = 'none'; hint.style.display = 'none';
+        next.style.display = 'block';
+        draw();
+      } else {
+        helped = true;
+        fb.replaceChildren(msg('no', t('startWith', { w: I.iso(s.answer[0]) })));
+      }
+    };
+    hint.onclick = () => {
+      if (solved) return;
+      helped = true;
+      const cp = slots.indexOf(s.answer[0]);
+      if (cp !== 0) { if (cp > 0) slots[cp] = null; slots[0] = s.answer[0]; }
+      fb.replaceChildren(msg('no', t('hintFirst', { w: I.iso(s.answer[0]) })));
+      draw();
+    };
+    draw();
+    show(
+      backBar(name, back),
+      segs(false),
+      el('p', { class: 'muted small', style: 'text-align:center', text: t('testProgress', { i: i + 1, n: total }) }),
+      el('p', { class: 'prompt', text: t('testPrompt') }),
+      el('div', { class: 'bigword' }, el('span', { text: I.testSentenceTr(test.id, i) })),
+      slotsEl, bank, check, hint, fb, next);
+  }
+
+  function finish() {
+    E.setTestResult(test.id, clean, total);
+    const res = E.testResult(test.id);
+    const ratio = clean / total;
+    const note = ratio >= 0.8 ? t('testHigh') : ratio >= 0.5 ? t('testMid') : t('testLow');
+    show(
+      backBar(name, back),
+      segs(true),
+      el('h1', { text: t('testDoneTitle') }),
+      el('div', { class: 'card', style: 'margin-top:12px; background:var(--ok-bg); color:var(--ok)' },
+        el('b', { 'data-test-score': String(clean), text: t('testScore', { k: clean, n: total }) }),
+        el('p', { style: 'margin-top:8px', text: note }),
+        el('p', { class: 'small', style: 'margin-top:8px', text: t('testBest', { k: res.k, n: res.n }) })),
+      el('button', { class: 'primary', style: 'margin-top:12px', onclick: () => testRun(test) }, t('testRetry')),
+      el('button', { style: 'margin-top:8px', onclick: back }, t('toPath')));
+  }
+
+  step();
 }
 
 /* ---------- екран на урок ---------- */
