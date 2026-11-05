@@ -203,7 +203,12 @@ function home() {
     tabs,
     counterCard(levelGroups(curLevel)),
     todayCard,
-    el('h2', { text: t('path') }),
+    el('div', { class: 'spread', style: 'margin-top:4px' },
+      el('h2', { text: t('path') }),
+      testsOf(lv.id).length ? el('button', {
+        class: 'ghost small-btn', 'data-tests-go': '1',
+        onclick: () => { const x = document.getElementById('tests-sec'); if (x) x.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
+      }, t('testsHeading') + ' ↓') : null),
     req.length ? el('p', { class: 'muted small', style: 'margin-bottom:8px', text: t('requiredNote', { done: reqDone, total: req.length }) }) : null,
     ...list,
     testsSection(lv),
@@ -229,7 +234,7 @@ function testsSection(lv) {
       el('div', { class: 't', text: t('testName', { n: test.n }) }),
       el('div', { class: 'muted small', text: res ? t('testBest', { k: res.k, n: res.n }) : t('testCovers', { a, b }) })));
   });
-  return el('div', { style: 'margin-top:20px' },
+  return el('div', { id: 'tests-sec', style: 'margin-top:20px' },
     el('h2', { text: t('testsHeading') }),
     el('p', { class: 'muted small', style: 'margin:4px 0 8px', text: t('testsDesc') }),
     ...cards);

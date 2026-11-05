@@ -122,6 +122,19 @@ import { tst as tst_lt } from './i18n/tests/lt.js';
 import { tst as tst_pl } from './i18n/tests/pl.js';
 import { tst as tst_es } from './i18n/tests/es.js';
 import { tst as tst_pt } from './i18n/tests/pt.js';
+import { m3 as m3_bg } from './i18n/m3/bg.js';
+import { m3 as m3_en } from './i18n/m3/en.js';
+import { m3 as m3_ru } from './i18n/m3/ru.js';
+import { m3 as m3_ur } from './i18n/m3/ur.js';
+import { m3 as m3_ps } from './i18n/m3/ps.js';
+import { m3 as m3_prs } from './i18n/m3/prs.js';
+import { m3 as m3_hi } from './i18n/m3/hi.js';
+import { m3 as m3_vi } from './i18n/m3/vi.js';
+import { m3 as m3_lv } from './i18n/m3/lv.js';
+import { m3 as m3_lt } from './i18n/m3/lt.js';
+import { m3 as m3_pl } from './i18n/m3/pl.js';
+import { m3 as m3_es } from './i18n/m3/es.js';
+import { m3 as m3_pt } from './i18n/m3/pt.js';
 
 function withExtras(pack, extras) {
   const out = { ...pack, ui: { ...pack.ui }, tests: { ...(pack.tests || {}) }, path: { ...pack.path }, words: { ...pack.words }, missions: { ...pack.missions } };
@@ -136,19 +149,19 @@ function withExtras(pack, extras) {
 }
 
 const PACKS = {
-  bg: withExtras(bg, [a2_bg, a2b_bg, b_bg, a1x_bg, a2c_bg, b1c_bg, b2c_bg, tst_bg]),
-  en: withExtras(en, [a2_en, a2b_en, b_en, a1x_en, a2c_en, b1c_en, b2c_en, tst_en]),
-  ru: withExtras(ru, [a2_ru, a2b_ru, b_ru, a1x_ru, a2c_ru, b1c_ru, b2c_ru, tst_ru]),
-  ur: withExtras(ur, [a2_ur, a2b_ur, b_ur, a1x_ur, a2c_ur, b1c_ur, b2c_ur, tst_ur]),
-  ps: withExtras(ps, [a2_ps, a2b_ps, b_ps, a1x_ps, a2c_ps, b1c_ps, b2c_ps, tst_ps]),
-  prs: withExtras(prs, [a2_prs, a2b_prs, b_prs, a1x_prs, a2c_prs, b1c_prs, b2c_prs, tst_prs]),
-  hi: withExtras(hi, [a2_hi, a2b_hi, b_hi, a1x_hi, a2c_hi, b1c_hi, b2c_hi, tst_hi]),
-  vi: withExtras(vi, [a2_vi, a2b_vi, b_vi, a1x_vi, a2c_vi, b1c_vi, b2c_vi, tst_vi]),
-  lv: withExtras(lv, [a2_lv, a2b_lv, b_lv, a1x_lv, a2c_lv, b1c_lv, b2c_lv, tst_lv]),
-  lt: withExtras(lt, [a2_lt, a2b_lt, b_lt, a1x_lt, a2c_lt, b1c_lt, b2c_lt, tst_lt]),
-  pl: withExtras(pl, [a2_pl, a2b_pl, b_pl, a1x_pl, a2c_pl, b1c_pl, b2c_pl, tst_pl]),
-  es: withExtras(es, [a2_es, a2b_es, b_es, a1x_es, a2c_es, b1c_es, b2c_es, tst_es]),
-  pt: withExtras(pt, [a2_pt, a2b_pt, b_pt, a1x_pt, a2c_pt, b1c_pt, b2c_pt, tst_pt]),
+  bg: withExtras(bg, [a2_bg, a2b_bg, b_bg, a1x_bg, a2c_bg, b1c_bg, b2c_bg, tst_bg, m3_bg]),
+  en: withExtras(en, [a2_en, a2b_en, b_en, a1x_en, a2c_en, b1c_en, b2c_en, tst_en, m3_en]),
+  ru: withExtras(ru, [a2_ru, a2b_ru, b_ru, a1x_ru, a2c_ru, b1c_ru, b2c_ru, tst_ru, m3_ru]),
+  ur: withExtras(ur, [a2_ur, a2b_ur, b_ur, a1x_ur, a2c_ur, b1c_ur, b2c_ur, tst_ur, m3_ur]),
+  ps: withExtras(ps, [a2_ps, a2b_ps, b_ps, a1x_ps, a2c_ps, b1c_ps, b2c_ps, tst_ps, m3_ps]),
+  prs: withExtras(prs, [a2_prs, a2b_prs, b_prs, a1x_prs, a2c_prs, b1c_prs, b2c_prs, tst_prs, m3_prs]),
+  hi: withExtras(hi, [a2_hi, a2b_hi, b_hi, a1x_hi, a2c_hi, b1c_hi, b2c_hi, tst_hi, m3_hi]),
+  vi: withExtras(vi, [a2_vi, a2b_vi, b_vi, a1x_vi, a2c_vi, b1c_vi, b2c_vi, tst_vi, m3_vi]),
+  lv: withExtras(lv, [a2_lv, a2b_lv, b_lv, a1x_lv, a2c_lv, b1c_lv, b2c_lv, tst_lv, m3_lv]),
+  lt: withExtras(lt, [a2_lt, a2b_lt, b_lt, a1x_lt, a2c_lt, b1c_lt, b2c_lt, tst_lt, m3_lt]),
+  pl: withExtras(pl, [a2_pl, a2b_pl, b_pl, a1x_pl, a2c_pl, b1c_pl, b2c_pl, tst_pl, m3_pl]),
+  es: withExtras(es, [a2_es, a2b_es, b_es, a1x_es, a2c_es, b1c_es, b2c_es, tst_es, m3_es]),
+  pt: withExtras(pt, [a2_pt, a2b_pt, b_pt, a1x_pt, a2c_pt, b1c_pt, b2c_pt, tst_pt, m3_pt]),
 };
 export const SUPPORTED = Object.keys(PACKS);
 
