@@ -12,6 +12,11 @@ import { lt } from './i18n/lt.js';
 import { pl } from './i18n/pl.js';
 import { es } from './i18n/es.js';
 import { pt } from './i18n/pt.js';
+import { ro } from './i18n/ro.js';
+import { tr } from './i18n/tr.js';
+import { ar } from './i18n/ar.js';
+import { zh } from './i18n/zh.js';
+import { ja } from './i18n/ja.js';
 import { a2 as a2_bg } from './i18n/a2/bg.js';
 import { a2b as a2b_bg } from './i18n/a2b/bg.js';
 import { b as b_bg } from './i18n/b/bg.js';
@@ -162,6 +167,11 @@ const PACKS = {
   pl: withExtras(pl, [a2_pl, a2b_pl, b_pl, a1x_pl, a2c_pl, b1c_pl, b2c_pl, tst_pl, m3_pl]),
   es: withExtras(es, [a2_es, a2b_es, b_es, a1x_es, a2c_es, b1c_es, b2c_es, tst_es, m3_es]),
   pt: withExtras(pt, [a2_pt, a2b_pt, b_pt, a1x_pt, a2c_pt, b1c_pt, b2c_pt, tst_pt, m3_pt]),
+  ro,
+  tr,
+  ar,
+  zh,
+  ja,
 };
 export const SUPPORTED = Object.keys(PACKS);
 
@@ -169,12 +179,13 @@ export const SUPPORTED = Object.keys(PACKS);
 export const LANG_NAMES = {
   bg: 'Български', en: 'English', ru: 'Русский',
   ur: 'اردو', ps: 'پښتو', prs: 'دری', hi: 'हिन्दी', vi: 'Tiếng Việt',
-  lv: 'Latviešu', lt: 'Lietuvių', pl: 'Polski', es: 'Español', pt: 'Português',
+  lv: 'Latviešu', lt: 'Lietuvių', pl: 'Polski', es: 'Español', pt: 'Português', ro: 'Română', tr: 'Türkçe', ar: 'العربية', zh: '简体中文', ja: '日本語',
 };
 const META = {
   ur: { dir: 'rtl', html: 'ur' },
   ps: { dir: 'rtl', html: 'ps' },
   prs: { dir: 'rtl', html: 'fa-AF' },
+  ar: { dir: 'rtl', html: 'ar' },
 };
 // Български е единственият превод, който авторът може да провери сам. Всички останали са „бета“.
 const VERIFIED = new Set(['bg']);
