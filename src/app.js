@@ -159,6 +159,15 @@ function paywall() {
     el('button', { class: 'ghost', style: 'margin-top:8px', onclick: () => note.replaceChildren(msg('no', t('billingSoon'))) }, t('restorePurchase')));
 }
 
+function progLine(p, st) {
+  if (st === 'done') return el('div', { class: 'prog ok', text: '✓ ' + (p.type === 'mission' ? t('missionDone') : t('learned')) });
+  if (p.type !== 'mission') {
+    const c = E.groupCounts(p.group);
+    if (c.known > 0 || c.learning > 0) return el('div', { class: 'prog', text: t('learned') + ': ' + t('ofTotal', { k: c.known, n: c.total }) });
+  }
+  return null;
+}
+
 function home() {
   applyScale();
   E.ensureTrial();
@@ -192,8 +201,12 @@ function home() {
     el('div', { class: 'dot' }, icon(st === 'done' ? 'check' : isNext ? 'play' : 'circle')),
     el('div', { style: 'flex:1; min-width:0' },
       el('div', { class: 't' }, I.pathTitle(p.id), p.required ? el('span', { class: 'badge', text: t('requiredBadge') }) : null),
-      el('div', { fi: true, class: 'muted small', text: p.sub })));
+      el('div', { fi: true, class: 'muted small', text: p.sub }),
+      progLine(p, st)));
   });
+  const doneN = lv.path.filter((p) => E.pathStatus(p) === 'done').length;
+  const pathBar = el('div', { style: 'margin-bottom:10px' },
+    el('div', { class: 'bar' }, el('i', { class: 'k', style: 'width:' + (lv.path.length ? (doneN / lv.path.length) * 100 : 0) + '%' })));
 
   show(
     el('div', { class: 'spread', style: 'margin-bottom:12px' },
@@ -204,12 +217,13 @@ function home() {
     counterCard(levelGroups(curLevel)),
     todayCard,
     el('div', { class: 'spread', style: 'margin-top:4px' },
-      el('h2', { text: t('path') }),
+      el('h2', { text: t('path') + ' · ' + t('ofTotal', { k: doneN, n: lv.path.length }) }),
       testsOf(lv.id).length ? el('button', {
         class: 'ghost small-btn', 'data-tests-go': '1',
         onclick: () => { const x = document.getElementById('tests-sec'); if (x) x.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
       }, t('testsHeading') + ' ↓') : null),
     req.length ? el('p', { class: 'muted small', style: 'margin-bottom:8px', text: t('requiredNote', { done: reqDone, total: req.length }) }) : null,
+    pathBar,
     ...list,
     testsSection(lv),
     curLevel === 'A1' && E.requiredDone() ? msg('ok', t('requiredAllDone')) : null);
@@ -235,7 +249,7 @@ function testsSection(lv) {
       el('div', { class: 'muted small', text: res ? t('testBest', { k: res.k, n: res.n }) : t('testCovers', { a, b }) })));
   });
   return el('div', { id: 'tests-sec', style: 'margin-top:20px' },
-    el('h2', { text: t('testsHeading') }),
+    el('h2', { text: t('testsHeading') + ' · ' + t('ofTotal', { k: tests.filter((x) => E.testResult(x.id)).length, n: tests.length }) }),
     el('p', { class: 'muted small', style: 'margin:4px 0 8px', text: t('testsDesc') }),
     ...cards);
 }
