@@ -133,3 +133,8 @@ svg.ic { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-wid
 
 textarea { font: inherit; color: var(--text); background: var(--card); border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px; resize: vertical; }
 h3 { font-size: calc(1.05rem * var(--s)); font-weight: 600; }
+
+.item.done { background: var(--ok-bg); border-color: var(--ok); }
+.item.done .dot { background: var(--ok); color: #fff; }
+.prog { font-size: calc(12px * var(--s)); color: var(--muted); margin-top: 2px; }
+.prog.ok { color: var(--ok); font-weight: 600; }
