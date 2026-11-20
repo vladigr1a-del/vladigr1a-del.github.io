@@ -69,6 +69,7 @@ export const zh = {
   "qHowSay": "“{tr}”用芬兰语怎么说？",
   "qBuild": "拼出这个单词：{tr}",
   "qSayAloud": "请大声说：",
+  "surprise": "今日惊喜",
   "delLetter": "删除最后一个字母",
   "micShort": "麦克风还不能听。",
   "almostAnswer": "差一点。正确答案：{a}",

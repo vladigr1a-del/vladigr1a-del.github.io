@@ -68,6 +68,7 @@ export const ps = {
     qHowSay: 'په فنلنډي کې «{tr}» څنګه وایي؟',
     qBuild: 'ټکی جوړ کړئ: {tr}',
     qSayAloud: 'په لوړ غږ ووایاست:',
+    surprise: 'د ورځې حیرانتیا',
     delLetter: 'وروستی توری ړنګ کړئ',
     micShort: 'مایکروفون لا نه اوري.',
     almostAnswer: 'نږدې. سم ځواب دا دی: {a}',

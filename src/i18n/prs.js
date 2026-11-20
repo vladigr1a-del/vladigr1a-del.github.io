@@ -68,6 +68,7 @@ export const prs = {
     qHowSay: 'در فنلندی «{tr}» را چه می‌گویند؟',
     qBuild: 'کلمه را بسازید: {tr}',
     qSayAloud: 'بلند بگویید:',
+    surprise: 'سورپرایز امروز',
     delLetter: 'پاک کردن آخرین حرف',
     micShort: 'میکروفون هنوز گوش نمی‌دهد.',
     almostAnswer: 'تقریباً. جواب درست این است: {a}',

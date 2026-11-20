@@ -69,6 +69,7 @@ export const ja = {
   "qHowSay": "「{tr}」はフィンランド語で何と言いますか？",
   "qBuild": "単語をつくってください：{tr}",
   "qSayAloud": "声に出して言ってください：",
+  "surprise": "今日のサプライズ",
   "delLetter": "最後の文字を消す",
   "micShort": "マイクはまだ聞いていません。",
   "almostAnswer": "おしい！正解：{a}",

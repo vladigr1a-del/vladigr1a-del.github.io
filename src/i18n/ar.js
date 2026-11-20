@@ -69,6 +69,7 @@ export const ar = {
   "qHowSay": "كيف تقول «{tr}» بالفنلندية؟",
   "qBuild": "كوّن الكلمة: {tr}",
   "qSayAloud": "قل بصوت عالٍ:",
+  "surprise": "مفاجأة اليوم",
   "delLetter": "احذف الحرف الأخير",
   "micShort": "الميكروفون لا يستمع بعد.",
   "almostAnswer": "تقريباً. الإجابة الصحيحة: {a}",

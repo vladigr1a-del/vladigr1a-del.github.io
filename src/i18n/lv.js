@@ -68,6 +68,7 @@ export const lv = {
     qHowSay: 'Kā somu valodā saka „{tr}”?',
     qBuild: 'Salieciet vārdu: {tr}',
     qSayAloud: 'Pasakiet skaļi:',
+    surprise: 'Dienas pārsteigums',
     delLetter: 'Dzēst pēdējo burtu',
     micShort: 'Mikrofons vēl neklausās.',
     almostAnswer: 'Gandrīz. Pareizā atbilde: {a}',

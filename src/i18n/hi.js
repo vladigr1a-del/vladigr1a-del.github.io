@@ -68,6 +68,7 @@ export const hi = {
     qHowSay: 'फ़िनिश में «{tr}» कैसे कहते हैं?',
     qBuild: 'शब्द बनाइए: {tr}',
     qSayAloud: 'ज़ोर से बोलिए:',
+    surprise: 'आज का सरप्राइज़',
     delLetter: 'आख़िरी अक्षर मिटाएँ',
     micShort: 'माइक्रोफ़ोन अभी नहीं सुनता।',
     almostAnswer: 'लगभग। सही उत्तर है: {a}',

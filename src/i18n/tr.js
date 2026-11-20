@@ -69,6 +69,7 @@ export const tr = {
   "qHowSay": "“{tr}” Fince nasıl söylenir?",
   "qBuild": "Kelimeyi oluşturun: {tr}",
   "qSayAloud": "Yüksek sesle söyleyin:",
+  "surprise": "Günün sürprizi",
   "delLetter": "Son harfi sil",
   "micShort": "Mikrofon henüz dinlemiyor.",
   "almostAnswer": "Neredeyse. Doğru cevap: {a}",

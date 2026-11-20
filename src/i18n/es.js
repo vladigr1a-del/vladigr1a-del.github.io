@@ -68,6 +68,7 @@ export const es = {
     qHowSay: '¿Cómo se dice «{tr}» en finés?',
     qBuild: 'Forma la palabra: {tr}',
     qSayAloud: 'Di en voz alta:',
+    surprise: 'Sorpresa del día',
     delLetter: 'Borrar la última letra',
     micShort: 'El micrófono todavía no escucha.',
     almostAnswer: 'Casi. La respuesta correcta es: {a}',

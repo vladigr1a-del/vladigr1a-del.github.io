@@ -68,6 +68,7 @@ export const lt = {
     qHowSay: 'Kaip suomiškai sakoma „{tr}“?',
     qBuild: 'Sudėliokite žodį: {tr}',
     qSayAloud: 'Pasakykite garsiai:',
+    surprise: 'Dienos staigmena',
     delLetter: 'Ištrinti paskutinę raidę',
     micShort: 'Mikrofonas dar neklauso.',
     almostAnswer: 'Beveik. Teisingas atsakymas: {a}',

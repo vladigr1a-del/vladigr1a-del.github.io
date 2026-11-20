@@ -69,6 +69,7 @@ export const ro = {
   "qHowSay": "Cum se spune „{tr}” în finlandeză?",
   "qBuild": "Alcătuiește cuvântul: {tr}",
   "qSayAloud": "Spune cu voce tare:",
+  "surprise": "Surpriza zilei",
   "delLetter": "Șterge ultima literă",
   "micShort": "Microfonul nu ascultă încă.",
   "almostAnswer": "Aproape. Răspunsul corect este: {a}",

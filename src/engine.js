@@ -3,6 +3,7 @@ import { WORD_GROUPS, PATH, ALL_PATH } from './content.js';
 import { wordMeaning } from './i18n.js';
 import { CONFIG, paywallOn } from './config.js';
 import { levelOfGroup } from './content.js';
+import { EMOJI } from './emoji.js';
 
 const KEY = 'finapp.v1';
 // След успешно повторение думата се връща след 1, 3, 7, 14, 30 дни.
@@ -89,6 +90,13 @@ export function isLevelLocked(levelId) {
 }
 export function isGroupLocked(group) { return isLevelLocked(levelOfGroup(group)); }
 
+export function surpriseDone() { return state.surprise === today(); }
+export function setSurpriseDone() { state.surprise = today(); save(); }
+// 5 случайни вече започнати думи за изненадата на деня
+export function surpriseWords() {
+  const w = allWords().filter((x) => wState(x.id).box >= 0);
+  return w.sort(() => Math.random() - 0.5).slice(0, 5);
+}
 export function advanceDay() { state.dayOffset += 1; save(); }
 
 // Всички думи като обекти
@@ -156,10 +164,13 @@ export function buildSession(group) {
 export function taskSequence(w) {
   const s = wState(w.id);
   const canLetters = !/\s/.test(w.fi) && w.fi.length <= 10;
+  const pic = !!EMOJI[w.fi];
+  // всеки път различна комбинация – за да не е еднообразно
+  const pick = (a) => a[Math.floor(Math.random() * a.length)];
   let seq;
-  if (s.box === -1) seq = ['tr', 'fi', 'say'];
-  else if (s.box < KNOWN_BOX) seq = ['fi', 'letters'];
-  else seq = ['letters'];
+  if (s.box === -1) seq = [pic ? 'picture' : 'tr', pick(['listen', 'fi']), pick(['say', 'letters'])];
+  else if (s.box < KNOWN_BOX) seq = [pick(pic ? ['picture', 'listen', 'fi'] : ['listen', 'fi']), pick(['letters', 'listen'])];
+  else seq = [pick(['letters', 'listen'])];
   return seq.map((t) => (t === 'letters' && !canLetters ? 'fi' : t));
 }
 

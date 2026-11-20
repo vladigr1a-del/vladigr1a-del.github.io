@@ -4,6 +4,7 @@ import { CONFIG, paywallOn, setTestPaywall } from './config.js';
 let curLevel = null;
 import * as E from './engine.js';
 import * as I from './i18n.js';
+import { EMOJI } from './emoji.js';
 
 const { t } = I;
 const root = document.getElementById('app');
@@ -186,6 +187,13 @@ function home() {
       : el('p', { class: 'muted', text: t('todayNone') }),
     due + fresh > 0 ? el('button', { class: 'primary', style: 'margin-top:12px', onclick: () => sessionRun(null, home) }, t('start')) : null);
 
+  const sw = E.surpriseWords();
+  const surpriseCard = sw.length >= 3 ? el('div', { class: 'card' },
+    el('h2', { text: '🎁 ' + t('surprise') }),
+    E.surpriseDone()
+      ? el('p', { class: 'prog ok', text: '✓ ' + t('learned') })
+      : el('button', { class: 'primary', onclick: () => sessionRun(null, home, sw) }, t('start'))) : null;
+
   const tabs = el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px' },
     ...LEVELS.map((l) => el('button', { class: l.id === curLevel ? 'primary' : '', style: 'flex:1', 'aria-pressed': String(l.id === curLevel), onclick: () => { curLevel = l.id; home(); } }, l.id)));
 
@@ -215,6 +223,7 @@ function home() {
     trialBanner(),
     tabs,
     counterCard(levelGroups(curLevel)),
+    surpriseCard,
     todayCard,
     el('div', { class: 'spread', style: 'margin-top:4px' },
       el('h2', { text: t('path') + ' · ' + t('ofTotal', { k: doneN, n: lv.path.length }) }),
@@ -497,8 +506,8 @@ function missionRun(item) {
 }
 
 /* ---------- думи: сесия ---------- */
-function sessionRun(group, back) {
-  const sess = E.buildSession(group);
+function sessionRun(group, back, surprise) {
+  const sess = surprise ? { list: surprise, due: [], fresh: [] } : E.buildSession(group);
   if (!sess.list.length) {
     show(backBar(t('words'), back), el('h1', { text: t('noWordsToday') }),
       el('p', { class: 'muted', style: 'margin:8px 0 16px', text: t('allRepeated') }),
@@ -511,6 +520,11 @@ function sessionRun(group, back) {
     for (const w of sess.list) {
       const seq = E.taskSequence(w);
       if (seq[r]) tasks.push({ w, type: seq[r] });
+    }
+    // между кръговете – игра „намери двойките“ (без време, без наказание)
+    if (r < 2 && sess.list.length >= 4) {
+      const grp = shuffle(sess.list).slice(0, 4);
+      tasks.push({ w: grp[0], type: 'pairs', words: grp });
     }
   }
   const pool = group ? E.wordsOf(group) : E.allWords();
@@ -555,7 +569,45 @@ function sessionRun(group, back) {
     const body = el('div');
     const bar = el('div', { class: 'bar', style: 'margin:6px 0 14px' }, el('i', { class: 'l', style: 'width:' + Math.round((ti / tasks.length) * 100) + '%' }));
 
-    if (tk.type === 'tr' || tk.type === 'fi') {
+    if (tk.type === 'picture' || tk.type === 'listen') {
+      const sn = el('p', { class: 'muted small', style: 'text-align:center; margin-bottom:8px' });
+      const isPic = tk.type === 'picture';
+      const key = isPic ? 'fi' : 'tr';
+      const ans = w[key];
+      if (isPic) {
+        body.append(el('p', { class: 'prompt', text: t('qHowSay', { tr: w.tr }) }),
+          el('div', { class: 'bigword', style: 'font-size:72px; padding:20px' }, EMOJI[w.fi]));
+      } else {
+        body.append(el('p', { class: 'prompt', text: t('listenWord') }),
+          el('button', { class: 'primary', style: 'margin-bottom:8px', onclick: () => speak(w.fi, sn) }, icon('volume'), ' ' + t('listen')), sn);
+        setTimeout(() => speak(w.fi, sn), 250);
+      }
+      shuffle([{ t: ans, ok: true }, ...distract(w, key, 2).map((x) => ({ t: x, ok: false }))]).forEach((o) => {
+        body.append(el('button', { class: 'opt', onclick: () => { if (locked) return; locked = true; finishTask(fb, o.ok, ans, nextBtn); } }, o.t));
+      });
+    } else if (tk.type === 'pairs') {
+      const ws = tk.words;
+      let sel = null, left = ws.length;
+      const colA = el('div', { class: 'stack' }), colB = el('div', { class: 'stack' });
+      const mk = (w2, side) => {
+        const b = el('button', { class: 'opt', style: 'text-align:center', onclick: () => {
+          if (b.dataset.done) return;
+          if (!sel || sel.side === side) { if (sel) sel.b.style.outline = ''; sel = { w: w2, side, b }; b.style.outline = '3px solid var(--accent)'; return; }
+          sel.b.style.outline = '';
+          if (sel.w.id === w2.id) {
+            [sel.b, b].forEach((x) => { x.dataset.done = '1'; x.style.background = 'var(--ok-bg)'; x.style.borderColor = 'var(--ok)'; });
+            left--; fb.replaceChildren(msg('ok', t('right')));
+            if (!left) nextBtn.style.display = 'block';
+          } else { fails.add(w2.id); fails.add(sel.w.id); fb.replaceChildren(); }
+          sel = null;
+        } }, side === 'fi' ? w2.fi : w2.tr);
+        if (side === 'fi') b.setAttribute('lang', 'fi');
+        return b;
+      };
+      shuffle(ws).forEach((x) => colA.append(mk(x, 'fi')));
+      shuffle(ws).forEach((x) => colB.append(mk(x, 'tr')));
+      body.append(el('div', { style: 'display:grid; grid-template-columns:1fr 1fr; gap:8px' }, colA, colB));
+    } else if (tk.type === 'tr' || tk.type === 'fi') {
       const q = tk.type === 'tr' ? t('qMeaning', { fi: I.iso(w.fi) }) : t('qHowSay', { tr: w.tr });
       const key = tk.type === 'tr' ? 'tr' : 'fi';
       const ans = w[key];
@@ -600,6 +652,11 @@ function sessionRun(group, back) {
   }
 
   function summary() {
+    if (surprise) {
+      E.setSurpriseDone();
+      show(el('h1', { text: '🎉 ' + t('surprise') }), msg('ok', t('sessionDone')), el('button', { class: 'primary', onclick: back }, t('continue')));
+      return;
+    }
     const newly = E.applyResults(sess.list, fails);
     const b = E.dueBuckets();
     const lines = [[t('after1'), b.d1], [t('after3'), b.d3], [t('after7'), b.d7], [t('later'), b.later]].filter((x) => x[1] > 0);

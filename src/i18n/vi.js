@@ -68,6 +68,7 @@ export const vi = {
     qHowSay: '«{tr}» nói thế nào bằng tiếng Phần Lan?',
     qBuild: 'Ghép thành từ: {tr}',
     qSayAloud: 'Hãy nói thành tiếng:',
+    surprise: 'Bất ngờ của ngày',
     delLetter: 'Xóa chữ cái cuối',
     micShort: 'Micro chưa nghe được.',
     almostAnswer: 'Gần đúng. Đáp án đúng là: {a}',

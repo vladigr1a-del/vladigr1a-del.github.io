@@ -68,6 +68,7 @@ export const ur = {
     qHowSay: 'فنش میں «{tr}» کیسے کہتے ہیں؟',
     qBuild: 'لفظ بنائیں: {tr}',
     qSayAloud: 'بلند آواز میں کہیں:',
+    surprise: 'آج کا سرپرائز',
     delLetter: 'آخری حرف مٹائیں',
     micShort: 'مائیکروفون ابھی نہیں سنتا۔',
     almostAnswer: 'تقریباً۔ درست جواب ہے: {a}',

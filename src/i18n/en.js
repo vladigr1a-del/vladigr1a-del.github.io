@@ -68,6 +68,7 @@ export const en = {
     qHowSay: 'How do you say “{tr}” in Finnish?',
     qBuild: 'Build the word: {tr}',
     qSayAloud: 'Say out loud:',
+    surprise: 'Surprise of the day',
     delLetter: 'Delete the last letter',
     micShort: 'The microphone is not listening yet.',
     almostAnswer: 'Almost. The correct answer is: {a}',
