@@ -141,6 +141,25 @@ import { m3 as m3_pl } from './i18n/m3/pl.js';
 import { m3 as m3_es } from './i18n/m3/es.js';
 import { m3 as m3_pt } from './i18n/m3/pt.js';
 
+import { ext as ext_bg } from './i18n/ext/bg.js';
+import { ext as ext_en } from './i18n/ext/en.js';
+import { ext as ext_ru } from './i18n/ext/ru.js';
+import { ext as ext_ur } from './i18n/ext/ur.js';
+import { ext as ext_ps } from './i18n/ext/ps.js';
+import { ext as ext_prs } from './i18n/ext/prs.js';
+import { ext as ext_hi } from './i18n/ext/hi.js';
+import { ext as ext_vi } from './i18n/ext/vi.js';
+import { ext as ext_lv } from './i18n/ext/lv.js';
+import { ext as ext_lt } from './i18n/ext/lt.js';
+import { ext as ext_pl } from './i18n/ext/pl.js';
+import { ext as ext_es } from './i18n/ext/es.js';
+import { ext as ext_pt } from './i18n/ext/pt.js';
+import { ext as ext_ro } from './i18n/ext/ro.js';
+import { ext as ext_tr } from './i18n/ext/tr.js';
+import { ext as ext_ar } from './i18n/ext/ar.js';
+import { ext as ext_zh } from './i18n/ext/zh.js';
+import { ext as ext_ja } from './i18n/ext/ja.js';
+
 function withExtras(pack, extras) {
   const out = { ...pack, ui: { ...pack.ui }, tests: { ...(pack.tests || {}) }, path: { ...pack.path }, words: { ...pack.words }, missions: { ...pack.missions } };
   for (const x of extras) {
@@ -173,6 +192,11 @@ const PACKS = {
   zh,
   ja,
 };
+const EXT = { bg: ext_bg, en: ext_en, ru: ext_ru, ur: ext_ur, ps: ext_ps, prs: ext_prs, hi: ext_hi, vi: ext_vi, lv: ext_lv, lt: ext_lt, pl: ext_pl, es: ext_es, pt: ext_pt, ro: ext_ro, tr: ext_tr, ar: ext_ar, zh: ext_zh, ja: ext_ja };
+for (const [l, e] of Object.entries(EXT)) {
+  Object.assign(PACKS[l].path, e.path);
+  Object.assign(PACKS[l].words, e.words);
+}
 export const SUPPORTED = Object.keys(PACKS);
 
 // Име на езика на самия език; посока на писане; код за html lang.

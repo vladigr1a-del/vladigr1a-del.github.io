@@ -10,6 +10,7 @@ import { TESTS } from './level-tests.js';
 import { WORD_GROUPS_B2C, PATH_B2C } from './level-b2c.js';
 import { WORD_GROUPS_B1C, PATH_B1C } from './level-b1c.js';
 import { WORD_GROUPS_A2C, PATH_A2C } from './level-a2c.js';
+import { WORD_GROUPS_EXT, PATH_EXT } from './level-ext.js';
 import { M3_SUBS, MISSIONS_M3 } from './level-m3.js';
 import { WORD_GROUPS_A1X, PATH_A1X, MISSIONS_A1X, A1_ORDER, A1_MOVED_FROM_A2 } from './level-a1x.js';
 
@@ -119,13 +120,13 @@ const MISSIONS_A1 = {
 };
 
 // Всички нива заедно. PATH остава пътят на A1; LEVELS описва всяко ниво поотделно.
-export const WORD_GROUPS = { ...WORD_GROUPS_A1, ...WORD_GROUPS_A2, ...WORD_GROUPS_A2B, ...WORD_GROUPS_B, ...WORD_GROUPS_A1X, ...WORD_GROUPS_A2C, ...WORD_GROUPS_B1C, ...WORD_GROUPS_B2C };
+export const WORD_GROUPS = { ...WORD_GROUPS_A1, ...WORD_GROUPS_A2, ...WORD_GROUPS_A2B, ...WORD_GROUPS_B, ...WORD_GROUPS_A1X, ...WORD_GROUPS_A2C, ...WORD_GROUPS_B1C, ...WORD_GROUPS_B2C, ...WORD_GROUPS_EXT };
 export const MISSIONS = { ...MISSIONS_A1, ...MISSIONS_A2, ...MISSIONS_A2B, ...MISSIONS_B, ...MISSIONS_A1X, ...MISSIONS_M3 };
 export const LEVELS = [
-  { id: 'A1', path: [...PATH, ...PATH_A1_EXTRA] },
-  { id: 'A2', path: PATH_A2 },
-  { id: 'B1', path: [...PATH_B1, ...withM3(PATH_B1C)] },
-  { id: 'B2', path: [...PATH_B2, ...withM3(PATH_B2C)] },
+  { id: 'A1', path: [...PATH, ...PATH_A1_EXTRA, ...PATH_EXT.A1] },
+  { id: 'A2', path: [...PATH_A2, ...PATH_EXT.A2] },
+  { id: 'B1', path: [...PATH_B1, ...withM3(PATH_B1C), ...PATH_EXT.B1] },
+  { id: 'B2', path: [...PATH_B2, ...withM3(PATH_B2C), ...PATH_EXT.B2] },
 ];
 export const ALL_PATH = LEVELS.flatMap((l) => l.path);
 export function levelGroups(id) { return LEVELS.find((l) => l.id === id).path.map((p) => p.group); }

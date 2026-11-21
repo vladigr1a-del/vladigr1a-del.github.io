@@ -172,9 +172,9 @@ function progLine(p, st) {
 function home() {
   applyScale();
   E.ensureTrial();
-  const due = E.dueWords(null).length;
-  const fresh = Math.min(E.ageProfile().newPerSession, E.freshWords(null, 99).length);
   if (!curLevel) curLevel = E.requiredDone() && LEVELS[0].path.every((p) => E.pathStatus(p) === 'done') ? 'A2' : 'A1';
+  const due = E.dueWords(null).length;
+  const fresh = Math.min(E.ageProfile().newPerSession, E.freshInLevel(levelGroups(curLevel), 999).length);
   const lv = LEVELS.find((l) => l.id === curLevel);
   const next = lv.path.find((p) => E.pathStatus(p) !== 'done');
   const req = lv.path.filter((p) => p.required);
@@ -185,19 +185,21 @@ function home() {
     due + fresh > 0
       ? el('p', { class: 'muted', text: t('todayCount', { due, fresh }) })
       : el('p', { class: 'muted', text: t('todayNone') }),
-    due + fresh > 0 ? el('button', { class: 'primary', style: 'margin-top:12px', onclick: () => sessionRun(null, home) }, t('start')) : null);
+    due + fresh > 0 ? el('button', { class: 'primary', style: 'margin-top:12px', onclick: () => sessionRun(null, home, null, null, levelGroups(curLevel)) }, t('start')) : null);
 
-  const sw = E.surpriseWords();
+  const sw = E.surpriseWords(levelGroups(curLevel));
   const surpriseCard = sw.length >= 3 ? el('div', { class: 'card' },
     el('h2', { text: '🎁 ' + t('surprise') }),
     E.surpriseDone()
       ? el('p', { class: 'prog ok', text: '✓ ' + t('learned') })
-      : el('button', { class: 'primary', onclick: () => sessionRun(null, home, sw) }, t('start'))) : null;
+      : el('button', { class: 'primary', onclick: () => sessionRun(null, home, E.surpriseWords(levelGroups(curLevel)), 'surprise') }, t('start'))) : null;
 
   const tabs = el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px' },
     ...LEVELS.map((l) => el('button', { class: l.id === curLevel ? 'primary' : '', style: 'flex:1', 'aria-pressed': String(l.id === curLevel), onclick: () => { curLevel = l.id; home(); } }, l.id)));
 
-  const list = lv.path.map((p) => {
+  const numOf = new Map(lv.path.map((p, i) => [p.id, i + 1]));
+  const ordered = lv.path.filter((p) => E.pathStatus(p) !== 'done').concat(lv.path.filter((p) => E.pathStatus(p) === 'done'));
+  const list = ordered.map((p) => {
     const st = E.pathStatus(p);
     const isNext = next && next.id === p.id;
     return el('div', {
@@ -208,7 +210,7 @@ function home() {
     },
     el('div', { class: 'dot' }, icon(st === 'done' ? 'check' : isNext ? 'play' : 'circle')),
     el('div', { style: 'flex:1; min-width:0' },
-      el('div', { class: 't' }, I.pathTitle(p.id), p.required ? el('span', { class: 'badge', text: t('requiredBadge') }) : null),
+      el('div', { class: 't' }, numOf.get(p.id) + '. ' + I.pathTitle(p.id), p.required ? el('span', { class: 'badge', text: t('requiredBadge') }) : null),
       el('div', { fi: true, class: 'muted small', text: p.sub }),
       progLine(p, st)));
   });
@@ -352,7 +354,7 @@ function testRun(test) {
         el('p', { style: 'margin-top:8px', text: note }),
         el('p', { class: 'small', style: 'margin-top:8px', text: t('testBest', { k: res.k, n: res.n }) })),
       el('button', { class: 'primary', style: 'margin-top:12px', onclick: () => testRun(test) }, t('testRetry')),
-      el('button', { style: 'margin-top:8px', onclick: back }, t('toPath')));
+      el('button', { style: 'margin-top:8px', onclick: back }, t('continue')));
   }
 
   step();
@@ -375,6 +377,9 @@ function itemScreen(item) {
     el('h2', { text: t('words') }),
     el('p', { class: 'muted', text: t('wordsDesc', { n: g.words.length }) }),
     el('button', { class: item.type === 'words' ? 'primary' : '', style: 'margin-top:12px', onclick: () => sessionRun(item.group, () => itemScreen(item)) }, t('learnWords'))));
+  if (E.pathStatus(item) === 'done' && item.type !== 'mission') {
+    nodes.push(el('button', { class: 'primary', style: 'margin-bottom:8px', onclick: () => sessionRun(item.group, () => itemScreen(item), E.wordsOf(item.group).sort(() => Math.random() - 0.5).slice(0, 8), 'practice') }, t('again')));
+  }
   if (item.required && E.pathStatus(item) !== 'done') {
     nodes.push(el('button', { onclick: () => skipTest(item) }, t('knowSet')));
   }
@@ -499,15 +504,15 @@ function missionRun(item) {
         el('b', { text: t('todayYouCan') }),
         el('div', { class: 'stack', style: 'margin-top:8px' }, ...mt.can.map((c) => el('p', { text: '• ' + c })))),
       el('button', { class: 'primary', onclick: () => sessionRun(item.group, () => itemScreen(item)) }, t('learnMissionWords')),
-      el('button', { style: 'margin-top:8px', onclick: home }, t('toPath')));
+      el('button', { style: 'margin-top:8px', onclick: home }, t('continue')));
   }
 
   step();
 }
 
 /* ---------- думи: сесия ---------- */
-function sessionRun(group, back, surprise) {
-  const sess = surprise ? { list: surprise, due: [], fresh: [] } : E.buildSession(group);
+function sessionRun(group, back, surprise, kind, lvGroups) {
+  const sess = surprise ? { list: surprise, due: [], fresh: [] } : E.buildSession(group, lvGroups);
   if (!sess.list.length) {
     show(backBar(t('words'), back), el('h1', { text: t('noWordsToday') }),
       el('p', { class: 'muted', style: 'margin:8px 0 16px', text: t('allRepeated') }),
@@ -653,8 +658,8 @@ function sessionRun(group, back, surprise) {
 
   function summary() {
     if (surprise) {
-      E.setSurpriseDone();
-      show(el('h1', { text: '🎉 ' + t('surprise') }), msg('ok', t('sessionDone')), el('button', { class: 'primary', onclick: back }, t('continue')));
+      if (kind === 'surprise') E.setSurpriseDone();
+      show(el('h1', { text: '🎉 ' + (kind === 'surprise' ? t('surprise') : t('sessionDone')) }), msg('ok', t('sessionDone')), el('button', { class: 'primary', onclick: back }, t('continue')));
       return;
     }
     const newly = E.applyResults(sess.list, fails);
@@ -694,7 +699,7 @@ function skipTest(item) {
         i++;
         if (i >= words.length) {
           E.markGroupKnown(item.group);
-          show(backBar(title, home), msg('ok', t('setOk')), el('button', { class: 'primary', onclick: home }, t('toPath')));
+          show(backBar(title, home), msg('ok', t('setOk')), el('button', { class: 'primary', onclick: home }, t('continue')));
         } else ask();
       } }, o.t)));
   }

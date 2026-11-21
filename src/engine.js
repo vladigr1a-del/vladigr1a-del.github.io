@@ -93,8 +93,8 @@ export function isGroupLocked(group) { return isLevelLocked(levelOfGroup(group))
 export function surpriseDone() { return state.surprise === today(); }
 export function setSurpriseDone() { state.surprise = today(); save(); }
 // 5 случайни вече започнати думи за изненадата на деня
-export function surpriseWords() {
-  const w = allWords().filter((x) => wState(x.id).box >= 0);
+export function surpriseWords(groups) {
+  const w = (groups ? wordsOf(groups) : allWords()).filter((x) => wState(x.id).box >= 0);
   return w.sort(() => Math.random() - 0.5).slice(0, 5);
 }
 export function advanceDay() { state.dayOffset += 1; save(); }
@@ -151,12 +151,19 @@ export function freshWords(group, limit) {
   return ws.slice(0, limit);
 }
 
+// Нови думи от текущото ниво, различни при всяко извикване
+export function freshInLevel(groups, limit) {
+  const ws = wordsOf(groups).filter((w) => wState(w.id).box === -1 && !isGroupLocked(w.group));
+  for (let i = ws.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [ws[i], ws[j]] = [ws[j], ws[i]]; }
+  return ws.slice(0, limit);
+}
+
 export function ageProfile() { return AGE[state.age] || AGE.adult; }
 
 // Сесия: думи за повторение + нови думи.
-export function buildSession(group) {
+export function buildSession(group, levelGroups) {
   const due = dueWords(group).slice(0, 12);
-  const fresh = freshWords(group, ageProfile().newPerSession);
+  const fresh = levelGroups ? freshInLevel(levelGroups, ageProfile().newPerSession) : freshWords(group, ageProfile().newPerSession);
   return { due, fresh, list: due.concat(fresh) };
 }
 
