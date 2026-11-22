@@ -511,6 +511,37 @@ function missionRun(item) {
 }
 
 /* ---------- думи: сесия ---------- */
+
+/* ---------- микрофон: разпознаване на казаната дума (по желание, без наказание) ---------- */
+function micButton(w, fb, onOk, isLocked) {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) return el('span');
+  const norm = (x) => String(x).toLowerCase().replace(/[^\p{L}\p{N} ]/gu, '').replace(/\s+/g, ' ').trim();
+  const target = norm(w.fi);
+  const btn = el('button', { class: 'primary', style: 'margin-bottom:8px', onclick: () => {
+    if (isLocked()) return;
+    let rec;
+    try { rec = new SR(); } catch (e) { return; }
+    rec.lang = 'fi-FI'; rec.interimResults = false; rec.maxAlternatives = 5; rec.continuous = false;
+    btn.disabled = true;
+    fb.replaceChildren(el('p', { class: 'muted small', style: 'text-align:center', text: '…' }));
+    let done = false;
+    const end = () => { btn.disabled = false; };
+    rec.onresult = (ev) => {
+      done = true;
+      const alts = [];
+      for (const r of ev.results) for (let i = 0; i < r.length; i++) alts.push(norm(r[i].transcript));
+      const ok = alts.some((a) => a === target || a.split(' ').includes(target));
+      if (ok) { fb.replaceChildren(); onOk(); }
+      else fb.replaceChildren(el('p', { class: 'muted', style: 'text-align:center', text: '🎤 ' + (alts[0] || '') + ' — ' + t('again') + '?' }));
+    };
+    rec.onerror = () => { if (!done) fb.replaceChildren(el('p', { class: 'muted small', style: 'text-align:center', text: t('micShort') })); done = true; end(); };
+    rec.onend = () => { if (!done) fb.replaceChildren(el('p', { class: 'muted small', style: 'text-align:center', text: t('micShort') })); end(); };
+    try { rec.start(); } catch (e) { end(); }
+  } }, icon('mic'), ' ' + t('speakNow'));
+  return btn;
+}
+
 function sessionRun(group, back, surprise, kind, lvGroups) {
   const sess = surprise ? { list: surprise, due: [], fresh: [] } : E.buildSession(group, lvGroups);
   if (!sess.list.length) {
@@ -650,6 +681,7 @@ function sessionRun(group, back, surprise, kind, lvGroups) {
         el('div', { class: 'bigword' }, el('b', { fi: true, text: w.fi }), el('span', { text: w.tr })),
         el('button', { style: 'margin-bottom:8px', onclick: () => speak(w.fi, sn) }, icon('volume'), ' ' + t('listen')),
         sn,
+        micButton(w, fb, () => { if (locked) return; locked = true; finishTask(fb, true, w.fi, nextBtn); }, () => locked),
         el('button', { onclick: () => { if (locked) return; locked = true; finishTask(fb, true, w.fi, nextBtn); } }, icon('mic'), ' ' + t('saidAloud')),
         el('p', { class: 'muted small', style: 'margin-top:8px; text-align:center', text: t('micShort') }));
     }
@@ -794,4 +826,4 @@ if ('serviceWorker' in navigator) {
 }
 
 // за тестване
-window.__app = { home, onboarding, E, I, MISSIONS, PATH, CONFIG, paywall };
+window.__app = { home, onboarding, E, I, MISSIONS, PATH, CONFIG, paywall, sessionRun };
