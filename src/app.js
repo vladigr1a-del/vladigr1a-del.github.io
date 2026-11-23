@@ -173,6 +173,7 @@ function home() {
   applyScale();
   E.ensureTrial();
   if (E.getCourse() === 'en' && I.getLang() === 'en') E.setCourse('fi');
+  if (E.getCourse() === 'fi' && I.getLang() === 'fi') E.setCourse('en'); // финландски интерфейс: финландският курс се скрива
   const course = E.getCourse();
   const LV = COURSES[course].levels;
   const lg = (id) => levelGroups(id, course);
@@ -227,7 +228,7 @@ function home() {
       el('h1', { text: course === 'en' ? I.courseTitle('en', curLevel) : t('appTitle').replace(/A1$/, curLevel) }),
       el('button', { class: 'icon ghost', 'aria-label': t('settingsAria'), onclick: settings }, icon('gear'))),
     trialBanner(),
-    I.getLang() !== 'en' ? el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px', 'data-course-switch': '1' },
+    I.getLang() !== 'en' && I.getLang() !== 'fi' ? el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px', 'data-course-switch': '1' },
       ...[['fi', 'Suomi'], ['en', 'English']].map(([c, name]) => el('button', { class: c === course ? 'primary' : '', style: 'flex:1', 'aria-pressed': String(c === course), lang: c, onclick: () => { if (c !== course) { E.setCourse(c); curLevel = null; home(); } } }, name))) : null,
     tabs,
     counterCard(lg(curLevel)),
