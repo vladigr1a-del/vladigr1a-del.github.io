@@ -127,6 +127,8 @@ export const LEVELS = [
   { id: 'A2', path: [...PATH_A2, ...PATH_EXT.A2] },
   { id: 'B1', path: [...PATH_B1, ...withM3(PATH_B1C), ...PATH_EXT.B1] },
   { id: 'B2', path: [...PATH_B2, ...withM3(PATH_B2C), ...PATH_EXT.B2] },
+  { id: 'C1', path: [...(PATH_EXT.C1 || [])] },
+  { id: 'C2', path: [...(PATH_EXT.C2 || [])] },
 ];
 export const ALL_PATH = LEVELS.flatMap((l) => l.path);
 export function levelGroups(id) { return LEVELS.find((l) => l.id === id).path.map((p) => p.group); }

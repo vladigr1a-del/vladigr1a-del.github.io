@@ -1,0 +1,7 @@
+{
+  "name": "finnish-a1",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Пробен курс по финландски, ниво A1. Без външни пакети."
+}
