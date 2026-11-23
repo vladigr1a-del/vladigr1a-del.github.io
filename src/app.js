@@ -813,7 +813,8 @@ function settings() {
     backupBlock(),
     restoreBlock(),
     resetBtn,
-    el('p', { class: 'muted small', style: 'margin-top:18px', text: t('trialNote') }));
+    el('p', { class: 'muted small', style: 'margin-top:18px', text: t('trialNote') }),
+    el('p', { class: 'muted small', style: 'margin-top:14px', text: '© 2026 Vladimir Georgiev. All rights reserved.' }));
 }
 
 /* ---------- старт ---------- */
