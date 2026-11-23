@@ -1,5 +1,5 @@
 // Двигател: запазване на напредъка, умно повторение, подбор на думи за сесия.
-import { WORD_GROUPS, PATH, ALL_PATH } from './content.js';
+import { WORD_GROUPS, PATH, ALL_PATH, COURSES, courseOfGroup } from './content.js';
 import { wordMeaning } from './i18n.js';
 import { CONFIG, paywallOn } from './config.js';
 import { levelOfGroup } from './content.js';
@@ -20,7 +20,7 @@ export const AGE = {
 
 function defaults() {
   // lang: null = автоматично (езикът на телефона)
-  return { v: 1, age: null, lang: null, words: {}, missions: {}, tests: {}, dayOffset: 0, trialStart: null, unlocked: false };
+  return { v: 1, age: null, lang: null, words: {}, missions: {}, tests: {}, dayOffset: 0, trialStart: null, unlocked: false, course: 'fi' };
 }
 
 let state = load();
@@ -48,7 +48,7 @@ export function getState() { return state; }
 
 export function resetAll() {
   const keepLang = state.lang;
-  const keepTrial = { trialStart: state.trialStart, unlocked: state.unlocked };
+  const keepTrial = { trialStart: state.trialStart, unlocked: state.unlocked, course: state.course };
   state = defaults();
   state.lang = keepLang;
   Object.assign(state, keepTrial);
@@ -57,6 +57,8 @@ export function resetAll() {
 
 export function setAge(age) { state.age = age; save(); }
 export function setLangPref(lang) { state.lang = lang; save(); }
+export function getCourse() { return state.course === 'en' ? 'en' : 'fi'; }
+export function setCourse(c) { state.course = c === 'en' ? 'en' : 'fi'; save(); }
 
 export function today() {
   const d = new Date();
@@ -102,10 +104,14 @@ export function advanceDay() { state.dayOffset += 1; save(); }
 // Всички думи като обекти
 export function allWords() {
   const out = [];
+  const course = getCourse();
   for (const gid of Object.keys(WORD_GROUPS)) {
-    WORD_GROUPS[gid].words.forEach((fi, idx) => {
+    if (courseOfGroup(gid) !== course) continue;
+    WORD_GROUPS[gid].words.forEach((raw, idx) => {
+      // Думите в курса по английски могат да имат пояснение в скоби; то не се показва и не се изговаря.
+      const fi = course === 'en' ? raw.replace(/\s*\([^)]*\)\s*$/, '') : raw;
       // tr е значението на езика на приложението
-      out.push({ id: gid + ':' + fi, group: gid, fi, tr: wordMeaning(gid, idx) });
+      out.push({ id: gid + ':' + raw, group: gid, fi, tr: wordMeaning(gid, idx) });
     });
   }
   return out;
@@ -142,7 +148,7 @@ export function freshWords(group, limit) {
   } else {
     // по реда на пътя: първата група, която още има нови думи
     ws = [];
-    for (const item of ALL_PATH) {
+    for (const item of COURSES[getCourse()].levels.flatMap((l) => l.path)) {
       if (isGroupLocked(item.group)) continue;
       const g = wordsOf(item.group).filter((w) => wState(w.id).box === -1);
       if (g.length) { ws = g; break; }
@@ -245,6 +251,7 @@ export function dueBuckets() {
 }
 
 export function requiredDone() {
+  if (getCourse() !== 'fi') return false;
   return PATH.filter((p) => p.required).every((p) => pathStatus(p) === 'done');
 }
 

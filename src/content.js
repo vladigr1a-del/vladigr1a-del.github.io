@@ -11,6 +11,7 @@ import { WORD_GROUPS_B2C, PATH_B2C } from './level-b2c.js';
 import { WORD_GROUPS_B1C, PATH_B1C } from './level-b1c.js';
 import { WORD_GROUPS_A2C, PATH_A2C } from './level-a2c.js';
 import { WORD_GROUPS_EXT, PATH_EXT } from './level-ext.js';
+import { WORD_GROUPS_EN, PATH_EN } from './level-en.js';
 import { M3_SUBS, MISSIONS_M3 } from './level-m3.js';
 import { WORD_GROUPS_A1X, PATH_A1X, MISSIONS_A1X, A1_ORDER, A1_MOVED_FROM_A2 } from './level-a1x.js';
 
@@ -120,7 +121,7 @@ const MISSIONS_A1 = {
 };
 
 // Всички нива заедно. PATH остава пътят на A1; LEVELS описва всяко ниво поотделно.
-export const WORD_GROUPS = { ...WORD_GROUPS_A1, ...WORD_GROUPS_A2, ...WORD_GROUPS_A2B, ...WORD_GROUPS_B, ...WORD_GROUPS_A1X, ...WORD_GROUPS_A2C, ...WORD_GROUPS_B1C, ...WORD_GROUPS_B2C, ...WORD_GROUPS_EXT };
+export const WORD_GROUPS = { ...WORD_GROUPS_A1, ...WORD_GROUPS_A2, ...WORD_GROUPS_A2B, ...WORD_GROUPS_B, ...WORD_GROUPS_A1X, ...WORD_GROUPS_A2C, ...WORD_GROUPS_B1C, ...WORD_GROUPS_B2C, ...WORD_GROUPS_EXT, ...WORD_GROUPS_EN };
 export const MISSIONS = { ...MISSIONS_A1, ...MISSIONS_A2, ...MISSIONS_A2B, ...MISSIONS_B, ...MISSIONS_A1X, ...MISSIONS_M3 };
 export const LEVELS = [
   { id: 'A1', path: [...PATH, ...PATH_A1_EXTRA, ...PATH_EXT.A1] },
@@ -130,12 +131,19 @@ export const LEVELS = [
   { id: 'C1', path: [...(PATH_EXT.C1 || [])] },
   { id: 'C2', path: [...(PATH_EXT.C2 || [])] },
 ];
+// Втори курс: английски (за хора, които говорят друг език). Нивата идват поетапно.
+export const LEVELS_EN = Object.entries(PATH_EN).map(([id, path]) => ({ id, path }));
+export const COURSES = {
+  fi: { id: 'fi', levels: LEVELS, speech: 'fi-FI', html: 'fi' },
+  en: { id: 'en', levels: LEVELS_EN, speech: 'en-US', html: 'en' },
+};
 export const ALL_PATH = LEVELS.flatMap((l) => l.path);
-export function levelGroups(id) { return LEVELS.find((l) => l.id === id).path.map((p) => p.group); }
+export function courseOfGroup(group) { return WORD_GROUPS_EN[group] ? 'en' : 'fi'; }
+export function levelGroups(id, course = 'fi') { return COURSES[course].levels.find((l) => l.id === id).path.map((p) => p.group); }
 export function levelOfGroup(group) {
-  const l = LEVELS.find((lv) => lv.path.some((p) => p.group === group));
+  const l = [...LEVELS, ...LEVELS_EN].find((lv) => lv.path.some((p) => p.group === group));
   return l ? l.id : null;
 }
 
 export { TESTS };
-export function testsOf(levelId) { return TESTS[levelId] || []; }
+export function testsOf(levelId, course = 'fi') { return course === 'fi' ? (TESTS[levelId] || []) : []; }

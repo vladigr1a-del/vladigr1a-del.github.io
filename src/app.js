@@ -1,4 +1,4 @@
-import { PATH, MISSIONS, WORD_GROUPS, LEVELS, levelGroups, levelOfGroup, testsOf } from './content.js';
+import { PATH, MISSIONS, WORD_GROUPS, LEVELS, COURSES, levelGroups, levelOfGroup, testsOf } from './content.js';
 import { CONFIG, paywallOn, setTestPaywall } from './config.js';
 
 let curLevel = null;
@@ -17,7 +17,7 @@ function el(tag, props = {}, ...kids) {
     if (k === 'class') e.className = v;
     else if (k === 'style') e.style.cssText = v;
     else if (k === 'text') e.textContent = v;
-    else if (k === 'fi') { e.setAttribute('dir', 'ltr'); e.setAttribute('lang', 'fi'); }
+    else if (k === 'fi') { e.setAttribute('dir', 'ltr'); e.setAttribute('lang', COURSES[E.getCourse()].html); }
     else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
     else e.setAttribute(k, v === true ? '' : v);
   }
@@ -74,7 +74,7 @@ function speak(text, holder) {
   try {
     if (!window.speechSynthesis) throw new Error('няма');
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'fi-FI';
+    u.lang = COURSES[E.getCourse()].speech;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
     if (holder) holder.textContent = '';
@@ -172,10 +172,14 @@ function progLine(p, st) {
 function home() {
   applyScale();
   E.ensureTrial();
-  if (!curLevel) curLevel = E.requiredDone() && LEVELS[0].path.every((p) => E.pathStatus(p) === 'done') ? 'A2' : 'A1';
+  if (E.getCourse() === 'en' && I.getLang() === 'en') E.setCourse('fi');
+  const course = E.getCourse();
+  const LV = COURSES[course].levels;
+  const lg = (id) => levelGroups(id, course);
+  if (!curLevel || !LV.some((l) => l.id === curLevel)) curLevel = course === 'en' ? 'A1' : E.requiredDone() && LEVELS[0].path.every((p) => E.pathStatus(p) === 'done') ? 'A2' : 'A1';
   const due = E.dueWords(null).length;
-  const fresh = Math.min(E.ageProfile().newPerSession, E.freshInLevel(levelGroups(curLevel), 999).length);
-  const lv = LEVELS.find((l) => l.id === curLevel);
+  const fresh = Math.min(E.ageProfile().newPerSession, E.freshInLevel(lg(curLevel), 999).length);
+  const lv = LV.find((l) => l.id === curLevel);
   const next = lv.path.find((p) => E.pathStatus(p) !== 'done');
   const req = lv.path.filter((p) => p.required);
   const reqDone = req.filter((p) => E.pathStatus(p) === 'done').length;
@@ -185,17 +189,17 @@ function home() {
     due + fresh > 0
       ? el('p', { class: 'muted', text: t('todayCount', { due, fresh }) })
       : el('p', { class: 'muted', text: t('todayNone') }),
-    due + fresh > 0 ? el('button', { class: 'primary', style: 'margin-top:12px', onclick: () => sessionRun(null, home, null, null, levelGroups(curLevel)) }, t('start')) : null);
+    due + fresh > 0 ? el('button', { class: 'primary', style: 'margin-top:12px', onclick: () => sessionRun(null, home, null, null, lg(curLevel)) }, t('start')) : null);
 
-  const sw = E.surpriseWords(levelGroups(curLevel));
+  const sw = E.surpriseWords(lg(curLevel));
   const surpriseCard = sw.length >= 3 ? el('div', { class: 'card' },
     el('h2', { text: '🎁 ' + t('surprise') }),
     E.surpriseDone()
       ? el('p', { class: 'prog ok', text: '✓ ' + t('learned') })
-      : el('button', { class: 'primary', onclick: () => sessionRun(null, home, E.surpriseWords(levelGroups(curLevel)), 'surprise') }, t('start'))) : null;
+      : el('button', { class: 'primary', onclick: () => sessionRun(null, home, E.surpriseWords(lg(curLevel)), 'surprise') }, t('start'))) : null;
 
   const tabs = el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px; flex-wrap:wrap' },
-    ...LEVELS.map((l) => el('button', { class: l.id === curLevel ? 'primary' : '', style: 'flex:1 1 0; min-width:3.2em; padding-left:6px; padding-right:6px', 'aria-pressed': String(l.id === curLevel), onclick: () => { curLevel = l.id; home(); } }, l.id)));
+    ...LV.map((l) => el('button', { class: l.id === curLevel ? 'primary' : '', style: 'flex:1 1 0; min-width:3.2em; padding-left:6px; padding-right:6px', 'aria-pressed': String(l.id === curLevel), onclick: () => { curLevel = l.id; home(); } }, l.id)));
 
   const numOf = new Map(lv.path.map((p, i) => [p.id, i + 1]));
   const ordered = lv.path.filter((p) => E.pathStatus(p) !== 'done').concat(lv.path.filter((p) => E.pathStatus(p) === 'done'));
@@ -220,16 +224,18 @@ function home() {
 
   show(
     el('div', { class: 'spread', style: 'margin-bottom:12px' },
-      el('h1', { text: t('appTitle').replace(/A1$/, curLevel) }),
+      el('h1', { text: course === 'en' ? I.courseTitle('en', curLevel) : t('appTitle').replace(/A1$/, curLevel) }),
       el('button', { class: 'icon ghost', 'aria-label': t('settingsAria'), onclick: settings }, icon('gear'))),
     trialBanner(),
+    I.getLang() !== 'en' ? el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px', 'data-course-switch': '1' },
+      ...[['fi', 'Suomi'], ['en', 'English']].map(([c, name]) => el('button', { class: c === course ? 'primary' : '', style: 'flex:1', 'aria-pressed': String(c === course), lang: c, onclick: () => { if (c !== course) { E.setCourse(c); curLevel = null; home(); } } }, name))) : null,
     tabs,
-    counterCard(levelGroups(curLevel)),
+    counterCard(lg(curLevel)),
     surpriseCard,
     todayCard,
     el('div', { class: 'spread', style: 'margin-top:4px' },
       el('h2', { text: t('path') + ' · ' + t('ofTotal', { k: doneN, n: lv.path.length }) }),
-      testsOf(lv.id).length ? el('button', {
+      testsOf(lv.id, course).length ? el('button', {
         class: 'ghost small-btn', 'data-tests-go': '1',
         onclick: () => { const x = document.getElementById('tests-sec'); if (x) x.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
       }, t('testsHeading') + ' ↓') : null),
@@ -242,7 +248,7 @@ function home() {
 
 /* ---------- тестове за напредък ---------- */
 function testsSection(lv) {
-  const tests = testsOf(lv.id);
+  const tests = testsOf(lv.id, E.getCourse());
   if (!tests.length) return null;
   const L = lv.path.length;
   const cards = tests.map((test, i) => {
@@ -522,7 +528,7 @@ function micButton(w, fb, onOk, isLocked) {
     if (isLocked()) return;
     let rec;
     try { rec = new SR(); } catch (e) { return; }
-    rec.lang = 'fi-FI'; rec.interimResults = false; rec.maxAlternatives = 5; rec.continuous = false;
+    rec.lang = COURSES[E.getCourse()].speech; rec.interimResults = false; rec.maxAlternatives = 5; rec.continuous = false;
     btn.disabled = true;
     fb.replaceChildren(el('p', { class: 'muted small', style: 'text-align:center', text: '…' }));
     let done = false;

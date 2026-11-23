@@ -159,6 +159,23 @@ import { ext as ext_tr } from './i18n/ext/tr.js';
 import { ext as ext_ar } from './i18n/ext/ar.js';
 import { ext as ext_zh } from './i18n/ext/zh.js';
 import { ext as ext_ja } from './i18n/ext/ja.js';
+import { enc as enc_bg } from './i18n/enc/bg.js';
+import { enc as enc_ru } from './i18n/enc/ru.js';
+import { enc as enc_ur } from './i18n/enc/ur.js';
+import { enc as enc_ps } from './i18n/enc/ps.js';
+import { enc as enc_prs } from './i18n/enc/prs.js';
+import { enc as enc_hi } from './i18n/enc/hi.js';
+import { enc as enc_vi } from './i18n/enc/vi.js';
+import { enc as enc_lv } from './i18n/enc/lv.js';
+import { enc as enc_lt } from './i18n/enc/lt.js';
+import { enc as enc_pl } from './i18n/enc/pl.js';
+import { enc as enc_es } from './i18n/enc/es.js';
+import { enc as enc_pt } from './i18n/enc/pt.js';
+import { enc as enc_ro } from './i18n/enc/ro.js';
+import { enc as enc_tr } from './i18n/enc/tr.js';
+import { enc as enc_ar } from './i18n/enc/ar.js';
+import { enc as enc_zh } from './i18n/enc/zh.js';
+import { enc as enc_ja } from './i18n/enc/ja.js';
 
 function withExtras(pack, extras) {
   const out = { ...pack, ui: { ...pack.ui }, tests: { ...(pack.tests || {}) }, path: { ...pack.path }, words: { ...pack.words }, missions: { ...pack.missions } };
@@ -197,7 +214,16 @@ for (const [l, e] of Object.entries(EXT)) {
   Object.assign(PACKS[l].path, e.path);
   Object.assign(PACKS[l].words, e.words);
 }
+const ENC = { bg: enc_bg, ru: enc_ru, ur: enc_ur, ps: enc_ps, prs: enc_prs, hi: enc_hi, vi: enc_vi, lv: enc_lv, lt: enc_lt, pl: enc_pl, es: enc_es, pt: enc_pt, ro: enc_ro, tr: enc_tr, ar: enc_ar, zh: enc_zh, ja: enc_ja };
+for (const [l, e] of Object.entries(ENC)) {
+  Object.assign(PACKS[l].path, e.path);
+  Object.assign(PACKS[l].words, e.words);
+}
 export const SUPPORTED = Object.keys(PACKS);
+
+// Как се казва „английски“ на всеки език (за заглавието на курса).
+const EN_NAME = { bg: 'Английски', ru: 'Английский', ur: 'انگریزی', ps: 'انګلیسي', prs: 'انگلیسی', hi: 'अंग्रेज़ी', vi: 'Tiếng Anh', lv: 'Angļu valoda', lt: 'Anglų kalba', pl: 'Angielski', es: 'Inglés', pt: 'Inglês', ro: 'Engleză', tr: 'İngilizce', ar: 'الإنجليزية', zh: '英语', ja: '英語', en: 'English' };
+export function courseTitle(course, level) { return (course === 'en' ? EN_NAME[current] || EN_NAME.en : '') + ', ' + level; }
 
 // Име на езика на самия език; посока на писане; код за html lang.
 export const LANG_NAMES = {
