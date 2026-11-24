@@ -3,7 +3,7 @@
 export const CONFIG = {
   // Тук сложи своя имейл (между кавичките), за да идват съобщенията за грешни преводи.
   // Докато е празно, бутонът „Грешен превод?“ не се показва.
-  reportEmail: '',
+  reportEmail: 'vladi.georgiev.fi@gmail.com',
   ENFORCE: false, // сложи true едва когато плащането през Google Play работи
   trialDays: 14,
   freeLevels: ['A1'],
