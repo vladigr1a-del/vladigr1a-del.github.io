@@ -208,8 +208,8 @@ function home() {
       ? el('p', { class: 'prog ok', text: '✓ ' + t('learned') })
       : el('button', { class: 'primary', onclick: () => sessionRun(null, home, E.surpriseWords(lg(curLevel)), 'surprise') }, t('start'))) : null;
 
-  const tabs = el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px; flex-wrap:wrap' },
-    ...LV.map((l) => el('button', { class: l.id === curLevel ? 'primary' : '', style: 'flex:1 1 0; min-width:3.2em; padding-left:6px; padding-right:6px', 'aria-pressed': String(l.id === curLevel), onclick: () => { curLevel = l.id; home(); } }, l.id)));
+  const tabs = el('div', { class: 'spread', style: 'gap:4px; margin-bottom:12px; flex-wrap:nowrap' },
+    ...LV.map((l) => el('button', { class: l.id === curLevel ? 'primary' : '', style: 'flex:1 1 0; min-width:0; padding-left:2px; padding-right:2px; font-size:clamp(12px, 3.8vw, 18px); white-space:nowrap', 'aria-pressed': String(l.id === curLevel), onclick: () => { curLevel = l.id; home(); } }, l.id)));
 
   const numOf = new Map(lv.path.map((p, i) => [p.id, i + 1]));
   const ordered = lv.path.filter((p) => E.pathStatus(p) !== 'done').concat(lv.path.filter((p) => E.pathStatus(p) === 'done'));
