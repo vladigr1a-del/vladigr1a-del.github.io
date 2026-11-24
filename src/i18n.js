@@ -17,19 +17,6 @@ import { tr } from './i18n/tr.js';
 import { ar } from './i18n/ar.js';
 import { zh } from './i18n/zh.js';
 import { ja } from './i18n/ja.js';
-import { uk } from './i18n/uk.js';
-import { a2 as a2_uk } from './i18n/a2/uk.js';
-import { a2b as a2b_uk } from './i18n/a2b/uk.js';
-import { b as b_uk } from './i18n/b/uk.js';
-import { a1x as a1x_uk } from './i18n/a1x/uk.js';
-import { a2c as a2c_uk } from './i18n/a2c/uk.js';
-import { b1c as b1c_uk } from './i18n/b1c/uk.js';
-import { b2c as b2c_uk } from './i18n/b2c/uk.js';
-import { tst as tst_uk } from './i18n/tests/uk.js';
-import { m3 as m3_uk } from './i18n/m3/uk.js';
-import { ext as ext_uk } from './i18n/ext/uk.js';
-import { enc as enc_uk } from './i18n/enc/uk.js';
-import { fi } from './i18n/fi.js';
 import { a2 as a2_bg } from './i18n/a2/bg.js';
 import { a2b as a2b_bg } from './i18n/a2b/bg.js';
 import { b as b_bg } from './i18n/b/bg.js';
@@ -189,7 +176,6 @@ import { enc as enc_tr } from './i18n/enc/tr.js';
 import { enc as enc_ar } from './i18n/enc/ar.js';
 import { enc as enc_zh } from './i18n/enc/zh.js';
 import { enc as enc_ja } from './i18n/enc/ja.js';
-import { enc as enc_fi } from './i18n/enc/fi.js';
 
 function withExtras(pack, extras) {
   const out = { ...pack, ui: { ...pack.ui }, tests: { ...(pack.tests || {}) }, path: { ...pack.path }, words: { ...pack.words }, missions: { ...pack.missions } };
@@ -222,15 +208,13 @@ const PACKS = {
   ar,
   zh,
   ja,
-  uk: withExtras(uk, [a2_uk, a2b_uk, b_uk, a1x_uk, a2c_uk, b1c_uk, b2c_uk, tst_uk, m3_uk]),
-  fi: withExtras(fi, []),
 };
-const EXT = { bg: ext_bg, en: ext_en, ru: ext_ru, ur: ext_ur, ps: ext_ps, prs: ext_prs, hi: ext_hi, vi: ext_vi, lv: ext_lv, lt: ext_lt, pl: ext_pl, es: ext_es, pt: ext_pt, ro: ext_ro, tr: ext_tr, ar: ext_ar, zh: ext_zh, ja: ext_ja, uk: ext_uk };
+const EXT = { bg: ext_bg, en: ext_en, ru: ext_ru, ur: ext_ur, ps: ext_ps, prs: ext_prs, hi: ext_hi, vi: ext_vi, lv: ext_lv, lt: ext_lt, pl: ext_pl, es: ext_es, pt: ext_pt, ro: ext_ro, tr: ext_tr, ar: ext_ar, zh: ext_zh, ja: ext_ja };
 for (const [l, e] of Object.entries(EXT)) {
   Object.assign(PACKS[l].path, e.path);
   Object.assign(PACKS[l].words, e.words);
 }
-const ENC = { bg: enc_bg, ru: enc_ru, ur: enc_ur, ps: enc_ps, prs: enc_prs, hi: enc_hi, vi: enc_vi, lv: enc_lv, lt: enc_lt, pl: enc_pl, es: enc_es, pt: enc_pt, ro: enc_ro, tr: enc_tr, ar: enc_ar, zh: enc_zh, ja: enc_ja, fi: enc_fi, uk: enc_uk };
+const ENC = { bg: enc_bg, ru: enc_ru, ur: enc_ur, ps: enc_ps, prs: enc_prs, hi: enc_hi, vi: enc_vi, lv: enc_lv, lt: enc_lt, pl: enc_pl, es: enc_es, pt: enc_pt, ro: enc_ro, tr: enc_tr, ar: enc_ar, zh: enc_zh, ja: enc_ja };
 for (const [l, e] of Object.entries(ENC)) {
   Object.assign(PACKS[l].path, e.path);
   Object.assign(PACKS[l].words, e.words);
@@ -238,14 +222,14 @@ for (const [l, e] of Object.entries(ENC)) {
 export const SUPPORTED = Object.keys(PACKS);
 
 // Как се казва „английски“ на всеки език (за заглавието на курса).
-const EN_NAME = { bg: 'Английски', ru: 'Английский', ur: 'انگریزی', ps: 'انګلیسي', prs: 'انگلیسی', hi: 'अंग्रेज़ी', vi: 'Tiếng Anh', lv: 'Angļu valoda', lt: 'Anglų kalba', pl: 'Angielski', es: 'Inglés', pt: 'Inglês', ro: 'Engleză', tr: 'İngilizce', ar: 'الإنجليزية', zh: '英语', ja: '英語', en: 'English', uk: 'Англійська', fi: 'Englanti' };
+const EN_NAME = { bg: 'Английски', ru: 'Английский', ur: 'انگریزی', ps: 'انګلیسي', prs: 'انگلیسی', hi: 'अंग्रेज़ी', vi: 'Tiếng Anh', lv: 'Angļu valoda', lt: 'Anglų kalba', pl: 'Angielski', es: 'Inglés', pt: 'Inglês', ro: 'Engleză', tr: 'İngilizce', ar: 'الإنجليزية', zh: '英语', ja: '英語', en: 'English' };
 export function courseTitle(course, level) { return (course === 'en' ? EN_NAME[current] || EN_NAME.en : '') + ', ' + level; }
 
 // Име на езика на самия език; посока на писане; код за html lang.
 export const LANG_NAMES = {
   bg: 'Български', en: 'English', ru: 'Русский',
   ur: 'اردو', ps: 'پښتو', prs: 'دری', hi: 'हिन्दी', vi: 'Tiếng Việt',
-  lv: 'Latviešu', lt: 'Lietuvių', pl: 'Polski', es: 'Español', pt: 'Português', ro: 'Română', tr: 'Türkçe', ar: 'العربية', zh: '简体中文', ja: '日本語', uk: 'Українська', fi: 'Suomi',
+  lv: 'Latviešu', lt: 'Lietuvių', pl: 'Polski', es: 'Español', pt: 'Português', ro: 'Română', tr: 'Türkçe', ar: 'العربية', zh: '简体中文', ja: '日本語',
 };
 const META = {
   ur: { dir: 'rtl', html: 'ur' },
@@ -257,8 +241,6 @@ const META = {
 const VERIFIED = new Set(['bg']);
 
 const FALLBACK = 'en';
-// Докато украинският превод не е пълен, липсващото се показва на руски (най-близкият език), после на английски.
-const ALT = {};
 let current = FALLBACK;
 
 export function isBeta(code) { return !VERIFIED.has(code); }
@@ -297,7 +279,7 @@ function fill(s, vars) {
 }
 
 export function t(key, vars) {
-  const s = PACKS[current].ui[key] ?? (PACKS[ALT[current]] || PACKS[FALLBACK]).ui[key] ?? PACKS[FALLBACK].ui[key] ?? key;
+  const s = PACKS[current].ui[key] ?? PACKS[FALLBACK].ui[key] ?? key;
   return fill(s, vars);
 }
 
@@ -308,28 +290,24 @@ export function iso(s) { return isRtl() ? '⁨' + s + '⁩' : String(s); }
 export function wordMeaning(group, idx) {
   const own = PACKS[current].words[group];
   if (own && own[idx] !== undefined) return own[idx];
-  const alt = PACKS[ALT[current]] && PACKS[ALT[current]].words[group];
-  if (alt && alt[idx] !== undefined) return alt[idx];
   const fb = PACKS[FALLBACK].words[group];
   return fb ? fb[idx] : '';
 }
 
 export function pathTitle(id) {
-  return PACKS[current].path[id] ?? (PACKS[ALT[current]] || {path: {}}).path[id] ?? PACKS[FALLBACK].path[id] ?? id;
+  return PACKS[current].path[id] ?? PACKS[FALLBACK].path[id] ?? id;
 }
 
 // Превод на изречение от тест за напредък.
 export function testSentenceTr(id, idx) {
   const own = PACKS[current].tests[id];
   if (own && own[idx] !== undefined) return own[idx];
-  const alt = PACKS[ALT[current]] && PACKS[ALT[current]].tests[id];
-  if (alt && alt[idx] !== undefined) return alt[idx];
   const fb = PACKS[FALLBACK].tests[id];
   return fb ? fb[idx] : '';
 }
 
 export function missionText(id) {
-  return PACKS[current].missions[id] ?? (PACKS[ALT[current]] || {missions: {}}).missions[id] ?? PACKS[FALLBACK].missions[id];
+  return PACKS[current].missions[id] ?? PACKS[FALLBACK].missions[id];
 }
 
 // Примерна държава за изречението „Откъде си“, различна за всеки език.
