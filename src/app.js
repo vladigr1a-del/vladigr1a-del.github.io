@@ -186,8 +186,8 @@ function home() {
   const course = E.getCourse();
   const LV = COURSES[course].levels;
   const lg = (id) => levelGroups(id, course);
-  if (!curLevel || !LV.some((l) => l.id === curLevel)) curLevel = course === 'en' ? 'A1' : E.requiredDone() && LEVELS[0].path.every((p) => E.pathStatus(p) === 'done') ? 'A2' : 'A1';
-  const due = E.dueWords(null).length;
+  if (!curLevel || !LV.some((l) => l.id === curLevel)) curLevel = 'A1'; // без избрано ниво – винаги A1
+  const due = E.dueWords(lg(curLevel)).length;
   const fresh = Math.min(E.ageProfile().newPerSession, E.freshInLevel(lg(curLevel), 999).length);
   const lv = LV.find((l) => l.id === curLevel);
   const next = lv.path.find((p) => E.pathStatus(p) !== 'done');
