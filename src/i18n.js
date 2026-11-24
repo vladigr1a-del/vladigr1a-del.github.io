@@ -311,7 +311,7 @@ export function setLang(code) {
     const m = META[current] || {};
     document.documentElement.lang = m.html || current;
     document.documentElement.dir = m.dir || 'ltr';
-    document.title = 'Suomi';
+    document.title = 'Bliso Speak';
   }
 }
 

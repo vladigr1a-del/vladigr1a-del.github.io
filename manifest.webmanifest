@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Suomi",
-  "short_name": "Suomi",
-  "description": "Finnish, step by step: missions, words and spaced review.",
+  "name": "Bliso Speak",
+  "short_name": "Bliso Speak",
+  "description": "Bliso Speak: learn languages step by step with missions, words and spaced review.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
