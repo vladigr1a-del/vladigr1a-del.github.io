@@ -168,7 +168,7 @@ export function ageProfile() { return AGE[state.age] || AGE.adult; }
 
 // Сесия: думи за повторение + нови думи.
 export function buildSession(group, levelGroups) {
-  const due = dueWords(levelGroups || group).slice(0, 12); // повторения само от същото ниво
+  const due = dueWords(group).slice(0, 12);
   const fresh = levelGroups ? freshInLevel(levelGroups, ageProfile().newPerSession) : freshWords(group, ageProfile().newPerSession);
   return { due, fresh, list: due.concat(fresh) };
 }

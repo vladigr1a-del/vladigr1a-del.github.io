@@ -70,15 +70,6 @@ function show(...nodes) {
   window.scrollTo(0, 0);
 }
 
-// Бутон „Грешен превод?“ – отваря готово писмо с думата, езика и мястото за поправка.
-function reportBtn(w) {
-  if (!CONFIG.reportEmail || !w) return el('span');
-  const body = ['Language: ' + I.getLang(), 'Finnish word: ' + w.fi, 'Shown translation: ' + w.tr,
-    'Word id: ' + w.id, '', 'Correct translation:', ''].join('\n');
-  const href = 'mailto:' + CONFIG.reportEmail + '?subject=' + encodeURIComponent('Translation report: ' + w.fi) + '&body=' + encodeURIComponent(body);
-  return el('a', { class: 'muted small', style: 'display:block; text-align:center; margin-top:12px', href, text: '⚑ ' + t('reportWrong') });
-}
-
 function speak(text, holder) {
   try {
     if (!window.speechSynthesis) throw new Error('няма');
@@ -182,12 +173,11 @@ function home() {
   applyScale();
   E.ensureTrial();
   if (E.getCourse() === 'en' && I.getLang() === 'en') E.setCourse('fi');
-  if (E.getCourse() === 'fi' && I.getLang() === 'fi') E.setCourse('en'); // финландски интерфейс: финландският курс се скрива
   const course = E.getCourse();
   const LV = COURSES[course].levels;
   const lg = (id) => levelGroups(id, course);
-  if (!curLevel || !LV.some((l) => l.id === curLevel)) curLevel = 'A1'; // без избрано ниво – винаги A1
-  const due = E.dueWords(lg(curLevel)).length;
+  if (!curLevel || !LV.some((l) => l.id === curLevel)) curLevel = course === 'en' ? 'A1' : E.requiredDone() && LEVELS[0].path.every((p) => E.pathStatus(p) === 'done') ? 'A2' : 'A1';
+  const due = E.dueWords(null).length;
   const fresh = Math.min(E.ageProfile().newPerSession, E.freshInLevel(lg(curLevel), 999).length);
   const lv = LV.find((l) => l.id === curLevel);
   const next = lv.path.find((p) => E.pathStatus(p) !== 'done');
@@ -208,8 +198,8 @@ function home() {
       ? el('p', { class: 'prog ok', text: '✓ ' + t('learned') })
       : el('button', { class: 'primary', onclick: () => sessionRun(null, home, E.surpriseWords(lg(curLevel)), 'surprise') }, t('start'))) : null;
 
-  const tabs = el('div', { class: 'spread', style: 'gap:4px; margin-bottom:12px; flex-wrap:nowrap' },
-    ...LV.map((l) => el('button', { class: l.id === curLevel ? 'primary' : '', style: 'flex:1 1 0; min-width:0; padding-left:2px; padding-right:2px; font-size:clamp(12px, 3.8vw, 18px); white-space:nowrap', 'aria-pressed': String(l.id === curLevel), onclick: () => { curLevel = l.id; home(); } }, l.id)));
+  const tabs = el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px; flex-wrap:wrap' },
+    ...LV.map((l) => el('button', { class: l.id === curLevel ? 'primary' : '', style: 'flex:1 1 0; min-width:3.2em; padding-left:6px; padding-right:6px', 'aria-pressed': String(l.id === curLevel), onclick: () => { curLevel = l.id; home(); } }, l.id)));
 
   const numOf = new Map(lv.path.map((p, i) => [p.id, i + 1]));
   const ordered = lv.path.filter((p) => E.pathStatus(p) !== 'done').concat(lv.path.filter((p) => E.pathStatus(p) === 'done'));
@@ -237,7 +227,7 @@ function home() {
       el('h1', { text: course === 'en' ? I.courseTitle('en', curLevel) : t('appTitle').replace(/A1$/, curLevel) }),
       el('button', { class: 'icon ghost', 'aria-label': t('settingsAria'), onclick: settings }, icon('gear'))),
     trialBanner(),
-    I.getLang() !== 'en' && I.getLang() !== 'fi' ? el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px', 'data-course-switch': '1' },
+    I.getLang() !== 'en' ? el('div', { class: 'spread', style: 'gap:8px; margin-bottom:12px', 'data-course-switch': '1' },
       ...[['fi', 'Suomi'], ['en', 'English']].map(([c, name]) => el('button', { class: c === course ? 'primary' : '', style: 'flex:1', 'aria-pressed': String(c === course), lang: c, onclick: () => { if (c !== course) { E.setCourse(c); curLevel = null; home(); } } }, name))) : null,
     tabs,
     counterCard(lg(curLevel)),
@@ -592,8 +582,7 @@ function sessionRun(group, back, surprise, kind, lvGroups) {
       el('button', { style: 'margin-bottom:8px', onclick: () => speak(w.fi, sn) }, icon('volume'), ' ' + t('listenWord')),
       sn,
       el('button', { class: 'primary', onclick: () => { li++; li < sess.fresh.length ? learnCard() : task(); } },
-        li < sess.fresh.length - 1 ? t('rememberedNext') : t('rememberedGo')),
-      reportBtn(w));
+        li < sess.fresh.length - 1 ? t('rememberedNext') : t('rememberedGo')));
   }
 
   function distract(w, key, n) {
@@ -702,7 +691,7 @@ function sessionRun(group, back, surprise, kind, lvGroups) {
         el('button', { onclick: () => { if (locked) return; locked = true; finishTask(fb, true, w.fi, nextBtn); } }, icon('mic'), ' ' + t('saidAloud')),
         el('p', { class: 'muted small', style: 'margin-top:8px; text-align:center', text: t('micShort') }));
     }
-    show(backBar(t('taskN', { i: ti + 1, n: tasks.length }), back), bar, body, fb, nextBtn, reportBtn(w));
+    show(backBar(t('taskN', { i: ti + 1, n: tasks.length }), back), bar, body, fb, nextBtn);
   }
 
   function summary() {
@@ -818,7 +807,7 @@ function settings() {
     el('h2', { style: 'margin-top:18px', text: t('langH') }),
     el('p', { class: 'muted small', style: 'margin-bottom:8px', text: t('langNote') }),
     langBtn(null, t('langAuto')),
-    ...I.SUPPORTED.map((c) => langBtn(c, I.LANG_NAMES[c] + (I.LANG_LATIN[c] ? ' (' + I.LANG_LATIN[c] + ')' : '') + (I.isBeta(c) ? ' · ' + t('betaTag') : ''))),
+    ...I.SUPPORTED.map((c) => langBtn(c, I.LANG_NAMES[c] + (I.isBeta(c) ? ' · ' + t('betaTag') : ''))),
     el('h2', { style: 'margin-top:18px', text: t('forTest') }),
     el('p', { class: 'muted small', style: 'margin-bottom:8px', text: t('nextDayDesc') }),
     el('button', { onclick: () => { E.advanceDay(); settings(); } }, t('nextDay')),
