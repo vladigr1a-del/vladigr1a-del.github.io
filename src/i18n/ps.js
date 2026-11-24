@@ -61,6 +61,7 @@ export const ps = {
     allRepeated: 'ټول تکرار شول. سبا راشئ کله چې ټکي د تکرار لپاره چمتو وي.',
     newWordN: 'نوی ټکی {i} له {n} څخه',
     listenWord: 'ټکی واورئ',
+    reportWrong: 'غلطه ژباړه؟',
     rememberedNext: 'یاد مې شو، راتلونکی',
     rememberedGo: 'یاد مې شو، تمرینونو ته',
     taskN: 'دنده {i} له {n} څخه',

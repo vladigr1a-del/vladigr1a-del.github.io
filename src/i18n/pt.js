@@ -61,6 +61,7 @@ export const pt = {
     allRepeated: 'Tudo revisto. Volte amanhã, quando as palavras estiverem prontas para rever.',
     newWordN: 'Palavra nova {i} de {n}',
     listenWord: 'Ouvir a palavra',
+    reportWrong: 'Tradução errada?',
     rememberedNext: 'Já sei, seguinte',
     rememberedGo: 'Já sei, para os exercícios',
     taskN: 'Tarefa {i} de {n}',

@@ -62,6 +62,7 @@ export const ja = {
   "allRepeated": "すべて復習しました。単語が復習の時期になったら、また明日来てください。",
   "newWordN": "新しい単語 {i} / {n}",
   "listenWord": "単語を聞く",
+  "reportWrong": "翻訳が違う？",
   "rememberedNext": "覚えました、次へ",
   "rememberedGo": "覚えました、練習へ",
   "taskN": "課題 {i} / {n}",

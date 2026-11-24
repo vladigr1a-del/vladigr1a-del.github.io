@@ -62,6 +62,7 @@ export const ar = {
   "allRepeated": "تمت مراجعة كل شيء. عُد غداً حين تصبح الكلمات جاهزة للمراجعة.",
   "newWordN": "كلمة جديدة {i} من {n}",
   "listenWord": "استمع إلى الكلمة",
+  "reportWrong": "ترجمة خاطئة؟",
   "rememberedNext": "أتذكّرها، التالي",
   "rememberedGo": "أتذكّرها، إلى التمارين",
   "taskN": "المهمة {i} من {n}",

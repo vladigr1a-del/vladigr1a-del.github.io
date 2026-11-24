@@ -62,6 +62,7 @@ export const tr = {
   "allRepeated": "Her şey tekrar edildi. Kelimeler tekrar için hazır olunca yarın gelin.",
   "newWordN": "Yeni kelime {i} / {n}",
   "listenWord": "Kelimeyi dinle",
+  "reportWrong": "Yanlış çeviri mi?",
   "rememberedNext": "Hatırlıyorum, sonraki",
   "rememberedGo": "Hatırlıyorum, alıştırmalara geç",
   "taskN": "Görev {i} / {n}",

@@ -59,6 +59,7 @@ export const fi = {
     allRepeated: 'Kaikki on kerrattu. Tule huomenna, kun sanat ovat valmiita kerrattaviksi.',
     newWordN: 'Uusi sana {i} / {n}',
     listenWord: 'Kuuntele sana',
+    reportWrong: 'Väärä käännös?',
     rememberedNext: 'Muistan, seuraava',
     rememberedGo: 'Muistan, harjoituksiin',
     taskN: 'Tehtävä {i} / {n}',

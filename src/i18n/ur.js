@@ -61,6 +61,7 @@ export const ur = {
     allRepeated: 'سب کچھ دہرا لیا گیا۔ کل آئیں، جب الفاظ دہرانے کے لیے تیار ہوں گے۔',
     newWordN: 'نیا لفظ {i} از {n}',
     listenWord: 'لفظ سنیں',
+    reportWrong: 'غلط ترجمہ؟',
     rememberedNext: 'یاد ہو گیا، اگلا',
     rememberedGo: 'یاد ہو گیا، مشقوں کی طرف',
     taskN: 'کام {i} از {n}',

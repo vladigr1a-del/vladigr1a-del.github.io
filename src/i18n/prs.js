@@ -61,6 +61,7 @@ export const prs = {
     allRepeated: 'همه تکرار شد. فردا بیایید، وقتی کلمات برای تکرار آماده باشند.',
     newWordN: 'کلمهٔ نو {i} از {n}',
     listenWord: 'شنیدن کلمه',
+    reportWrong: 'ترجمه اشتباه؟',
     rememberedNext: 'یاد گرفتم، بعدی',
     rememberedGo: 'یاد گرفتم، به تمرین‌ها',
     taskN: 'کار {i} از {n}',

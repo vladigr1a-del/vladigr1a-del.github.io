@@ -61,6 +61,7 @@ export const bg = {
     allRepeated: 'Всичко е повторено. Върни се утре, когато думите са готови за повторение.',
     newWordN: 'Нова дума {i} от {n}',
     listenWord: 'Чуй думата',
+    reportWrong: 'Грешен превод?',
     rememberedNext: 'Запомних, следваща',
     rememberedGo: 'Запомних, към упражненията',
     taskN: 'Задача {i} от {n}',

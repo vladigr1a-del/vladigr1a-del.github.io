@@ -61,6 +61,7 @@ export const vi = {
     allRepeated: 'Đã ôn xong tất cả. Mai quay lại khi các từ sẵn sàng để ôn.',
     newWordN: 'Từ mới {i} trên {n}',
     listenWord: 'Nghe từ',
+    reportWrong: 'Dịch sai?',
     rememberedNext: 'Tôi nhớ rồi, tiếp theo',
     rememberedGo: 'Tôi nhớ rồi, sang bài tập',
     taskN: 'Bài {i} trên {n}',

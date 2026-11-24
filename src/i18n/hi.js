@@ -61,6 +61,7 @@ export const hi = {
     allRepeated: 'सब दोहराया जा चुका है। कल आइए, जब शब्द दोहराने के लिए तैयार होंगे।',
     newWordN: 'नया शब्द {i} / {n}',
     listenWord: 'शब्द सुनें',
+    reportWrong: 'गलत अनुवाद?',
     rememberedNext: 'याद हो गया, अगला',
     rememberedGo: 'याद हो गया, अभ्यास पर',
     taskN: 'काम {i} / {n}',

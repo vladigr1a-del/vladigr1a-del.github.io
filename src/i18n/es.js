@@ -61,6 +61,7 @@ export const es = {
     allRepeated: 'Todo está repasado. Vuelve mañana, cuando las palabras estén listas para repasar.',
     newWordN: 'Palabra nueva {i} de {n}',
     listenWord: 'Escuchar la palabra',
+    reportWrong: '¿Traducción incorrecta?',
     rememberedNext: 'Ya la recuerdo, siguiente',
     rememberedGo: 'Ya la recuerdo, a los ejercicios',
     taskN: 'Tarea {i} de {n}',

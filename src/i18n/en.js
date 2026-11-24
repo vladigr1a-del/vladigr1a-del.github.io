@@ -61,6 +61,7 @@ export const en = {
     allRepeated: 'Everything is reviewed. Come back tomorrow when the words are ready to review.',
     newWordN: 'New word {i} of {n}',
     listenWord: 'Listen to the word',
+    reportWrong: 'Wrong translation?',
     rememberedNext: 'I remember it, next',
     rememberedGo: 'I remember it, to the exercises',
     taskN: 'Task {i} of {n}',

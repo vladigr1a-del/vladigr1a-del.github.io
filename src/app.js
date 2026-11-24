@@ -70,6 +70,15 @@ function show(...nodes) {
   window.scrollTo(0, 0);
 }
 
+// Бутон „Грешен превод?“ – отваря готово писмо с думата, езика и мястото за поправка.
+function reportBtn(w) {
+  if (!CONFIG.reportEmail || !w) return el('span');
+  const body = ['Language: ' + I.getLang(), 'Finnish word: ' + w.fi, 'Shown translation: ' + w.tr,
+    'Word id: ' + w.id, '', 'Correct translation:', ''].join('\n');
+  const href = 'mailto:' + CONFIG.reportEmail + '?subject=' + encodeURIComponent('Translation report: ' + w.fi) + '&body=' + encodeURIComponent(body);
+  return el('a', { class: 'muted small', style: 'display:block; text-align:center; margin-top:12px', href, text: '⚑ ' + t('reportWrong') });
+}
+
 function speak(text, holder) {
   try {
     if (!window.speechSynthesis) throw new Error('няма');
@@ -583,7 +592,8 @@ function sessionRun(group, back, surprise, kind, lvGroups) {
       el('button', { style: 'margin-bottom:8px', onclick: () => speak(w.fi, sn) }, icon('volume'), ' ' + t('listenWord')),
       sn,
       el('button', { class: 'primary', onclick: () => { li++; li < sess.fresh.length ? learnCard() : task(); } },
-        li < sess.fresh.length - 1 ? t('rememberedNext') : t('rememberedGo')));
+        li < sess.fresh.length - 1 ? t('rememberedNext') : t('rememberedGo')),
+      reportBtn(w));
   }
 
   function distract(w, key, n) {
@@ -692,7 +702,7 @@ function sessionRun(group, back, surprise, kind, lvGroups) {
         el('button', { onclick: () => { if (locked) return; locked = true; finishTask(fb, true, w.fi, nextBtn); } }, icon('mic'), ' ' + t('saidAloud')),
         el('p', { class: 'muted small', style: 'margin-top:8px; text-align:center', text: t('micShort') }));
     }
-    show(backBar(t('taskN', { i: ti + 1, n: tasks.length }), back), bar, body, fb, nextBtn);
+    show(backBar(t('taskN', { i: ti + 1, n: tasks.length }), back), bar, body, fb, nextBtn, reportBtn(w));
   }
 
   function summary() {

@@ -61,6 +61,7 @@ export const lt = {
     allRepeated: 'Viskas pakartota. Ateikite rytoj, kai žodžiai bus paruošti kartoti.',
     newWordN: 'Naujas žodis {i} iš {n}',
     listenWord: 'Išklausyti žodį',
+    reportWrong: 'Neteisingas vertimas?',
     rememberedNext: 'Prisiminiau, toliau',
     rememberedGo: 'Prisiminiau, į pratimus',
     taskN: 'Užduotis {i} iš {n}',

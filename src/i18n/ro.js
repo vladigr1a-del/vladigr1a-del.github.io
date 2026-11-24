@@ -62,6 +62,7 @@ export const ro = {
   "allRepeated": "Totul e repetat. Revino mâine, când cuvintele sunt gata de repetat.",
   "newWordN": "Cuvântul nou {i} din {n}",
   "listenWord": "Ascultă cuvântul",
+  "reportWrong": "Traducere greșită?",
   "rememberedNext": "Îmi amintesc, mai departe",
   "rememberedGo": "Îmi amintesc, la exerciții",
   "taskN": "Sarcina {i} din {n}",

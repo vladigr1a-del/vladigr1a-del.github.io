@@ -62,6 +62,7 @@ export const zh = {
   "allRepeated": "全部复习完了。单词到了复习时间，明天再来。",
   "newWordN": "新单词 {i} / {n}",
   "listenWord": "听单词",
+  "reportWrong": "翻译错误？",
   "rememberedNext": "我记住了，下一个",
   "rememberedGo": "我记住了，去做练习",
   "taskN": "任务 {i} / {n}",

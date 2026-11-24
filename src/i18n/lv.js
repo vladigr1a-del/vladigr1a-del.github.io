@@ -61,6 +61,7 @@ export const lv = {
     allRepeated: 'Viss atkārtots. Atnāciet rīt, kad vārdi būs gatavi atkārtošanai.',
     newWordN: 'Jauns vārds {i} no {n}',
     listenWord: 'Noklausīties vārdu',
+    reportWrong: 'Nepareizs tulkojums?',
     rememberedNext: 'Atcerējos, nākamais',
     rememberedGo: 'Atcerējos, uz vingrinājumiem',
     taskN: 'Uzdevums {i} no {n}',

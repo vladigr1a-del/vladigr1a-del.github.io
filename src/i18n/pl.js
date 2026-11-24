@@ -61,6 +61,7 @@ export const pl = {
     allRepeated: 'Wszystko powtórzone. Wróć jutro, gdy słowa będą gotowe do powtórki.',
     newWordN: 'Nowe słowo {i} z {n}',
     listenWord: 'Posłuchaj słowa',
+    reportWrong: 'Błędne tłumaczenie?',
     rememberedNext: 'Zapamiętałem(-am), dalej',
     rememberedGo: 'Zapamiętałem(-am), do ćwiczeń',
     taskN: 'Zadanie {i} z {n}',
