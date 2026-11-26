@@ -123,7 +123,7 @@ function counterCard(group, title) {
 function onboarding() {
   show(
     el('h1', { text: t('welcome') }),
-    el('p', { class: 'muted', style: 'margin:6px 0 16px', text: t('whoLearns') }),
+    el('p', { class: 'muted', style: 'margin:6px 0 16px', text: t(E.getCourse() === 'en' ? 'whoLearnsEn' : 'whoLearns') }),
     ...['kid', 'adult', 'senior'].map((k) =>
       el('button', {
         style: 'margin-bottom:10px; text-align:start',
@@ -628,7 +628,7 @@ function sessionRun(group, back, surprise, kind, lvGroups) {
       const key = isPic ? 'fi' : 'tr';
       const ans = w[key];
       if (isPic) {
-        body.append(el('p', { class: 'prompt', text: t('qHowSay', { tr: w.tr }) }),
+        body.append(el('p', { class: 'prompt', text: t(E.getCourse() === 'en' ? 'qHowSayEn' : 'qHowSay', { tr: w.tr }) }),
           el('div', { class: 'bigword', style: 'font-size:72px; padding:20px' }, EMOJI[w.fi]));
       } else {
         body.append(el('p', { class: 'prompt', text: t('listenWord') }),
@@ -661,7 +661,7 @@ function sessionRun(group, back, surprise, kind, lvGroups) {
       shuffle(ws).forEach((x) => colB.append(mk(x, 'tr')));
       body.append(el('div', { style: 'display:grid; grid-template-columns:1fr 1fr; gap:8px' }, colA, colB));
     } else if (tk.type === 'tr' || tk.type === 'fi') {
-      const q = tk.type === 'tr' ? t('qMeaning', { fi: I.iso(w.fi) }) : t('qHowSay', { tr: w.tr });
+      const q = tk.type === 'tr' ? t('qMeaning', { fi: I.iso(w.fi) }) : t(E.getCourse() === 'en' ? 'qHowSayEn' : 'qHowSay', { tr: w.tr });
       const key = tk.type === 'tr' ? 'tr' : 'fi';
       const ans = w[key];
       body.append(el('p', { class: 'prompt', text: q }));
@@ -830,7 +830,7 @@ function settings() {
     backupBlock(),
     restoreBlock(),
     resetBtn,
-    el('p', { class: 'muted small', style: 'margin-top:18px', text: t('trialNote') }),
+    el('p', { class: 'muted small', style: 'margin-top:18px', text: t(E.getCourse() === 'en' ? 'trialNoteEn' : 'trialNote') }),
     el('p', { class: 'muted small', style: 'margin-top:14px', text: '© 2026 Vladimir Georgiev. All rights reserved.' }));
 }
 
